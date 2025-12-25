@@ -17,42 +17,15 @@ export function EducationCard() {
   const education: Education[] = [
     {
       id: 1,
-      degree: "Master of Science",
-      field: "Computer Science",
-      institution: "Stanford University",
-      location: "Stanford, CA",
-      duration: "2022 - 2024",
-      gpa: "3.9/4.0",
-      achievements: [
-        "Graduate Research Assistant - AI/ML Lab",
-        "Published 2 papers in top-tier conferences",
-        "Teaching Assistant for Data Structures",
-      ],
-      courses: [
-        "Machine Learning",
-        "Distributed Systems",
-        "Advanced Algorithms",
-      ],
-    },
-    {
-      id: 2,
       degree: "Bachelor of Technology",
-      field: "Computer Science & Engineering",
-      institution: "Indian Institute of Technology",
-      location: "Mumbai, India",
-      duration: "2018 - 2022",
-      gpa: "9.2/10.0",
-      achievements: [
-        "Dean's List - All semesters",
-        "Best Final Year Project Award",
-        "ACM Student Chapter President",
-      ],
-      courses: [
-        "Data Structures",
-        "Operating Systems",
-        "Database Management",
-        "Computer Networks",
-      ],
+      field: "Computer Science & Engineering (CSE) - Core",
+      institution: "VIT Chennai",
+      location: "Chennai, India",
+      duration: "2024 - 2028",
+      gpa: "9.1/10.0",
+      achievements: [],
+      courses: [],
+      current: true,
     },
   ];
 

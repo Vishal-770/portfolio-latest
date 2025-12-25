@@ -10,5 +10,6 @@ export const socialLinks = {
   mail: "mailto:vishalwebdev07@gmail.com",
   geeks_forgeeks: "https://www.geeksforgeeks.org/profile/vishalwelx18",
   devfolio: "https://devfolio.co/@vishal_7707",
+  discord:"https://discord.com/users/832469847770267659",
 };
 export const mail="vishalwebdev07@gmail.com`"

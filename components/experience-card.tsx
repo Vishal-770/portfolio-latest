@@ -1,64 +1,7 @@
 import { Briefcase, Building2, Calendar, MapPin } from "lucide-react";
-
-interface Experience {
-  id: number;
-  title: string;
-  company: string;
-  location: string;
-  duration: string;
-  type: "full-time" | "part-time" | "internship" | "freelance";
-  description: string[];
-  skills: string[];
-  current?: boolean;
-}
+import { experiences } from "@/constants/experiences";
 
 export function ExperienceCard() {
-  const experiences: Experience[] = [
-    {
-      id: 1,
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Inc.",
-      location: "San Francisco, CA",
-      duration: "Jan 2023 - Present",
-      type: "full-time",
-      current: true,
-      description: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Implemented CI/CD pipelines reducing deployment time by 60%",
-        "Mentored junior developers and conducted code reviews",
-      ],
-      skills: ["React", "Node.js", "AWS", "PostgreSQL", "Docker"],
-    },
-    {
-      id: 2,
-      title: "Full Stack Developer",
-      company: "StartupXYZ",
-      location: "Remote",
-      duration: "Jun 2021 - Dec 2022",
-      type: "full-time",
-      description: [
-        "Built real-time collaboration features using WebSocket",
-        "Developed RESTful APIs handling 10K+ requests/minute",
-        "Optimized database queries improving response time by 40%",
-      ],
-      skills: ["Vue.js", "Express", "MongoDB", "Redis", "TypeScript"],
-    },
-    {
-      id: 3,
-      title: "Frontend Developer Intern",
-      company: "Digital Agency",
-      location: "New York, NY",
-      duration: "Jan 2021 - May 2021",
-      type: "internship",
-      description: [
-        "Developed responsive web applications using React",
-        "Collaborated with designers to implement pixel-perfect UIs",
-        "Participated in agile sprints and daily standups",
-      ],
-      skills: ["React", "CSS", "JavaScript", "Figma"],
-    },
-  ];
-
   const getTypeColor = (type: Experience["type"]) => {
     switch (type) {
       case "full-time":

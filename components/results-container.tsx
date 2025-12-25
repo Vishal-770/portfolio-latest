@@ -1,6 +1,5 @@
 import { ProjectCard } from "./project-card";
 import { LeetCodeCard } from "./Leetcode/leetcode-card";
-import { GFGCard } from "./gfg-card";
 import { SkillsCard } from "./skills-card";
 import { ExperienceCard } from "./experience-card";
 import { HackathonsCard } from "./hackathons-card";
@@ -17,9 +16,7 @@ export function ResultsContainer() {
           Coding Profiles
         </h2>
         <div className="space-y-3">
-
-         <WrappedLeetCodeCard/>
-          <GFGCard />
+          <WrappedLeetCodeCard />
         </div>
       </div>
 

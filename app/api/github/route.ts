@@ -20,12 +20,12 @@ export async function GET(req: Request) {
       headers["Authorization"] = `Bearer ${token}`;
     }
 
+    const profileUrl = `https://api.github.com/users/${username}`;
+    const reposUrl = `https://api.github.com/users/${username}/repos?per_page=6&sort=updated`;
+
     const [profileRes, reposRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${username}`, { headers }),
-      fetch(
-        `https://api.github.com/users/${username}/repos?per_page=6&sort=updated`,
-        { headers }
-      ),
+      fetch(profileUrl, { headers }),
+      fetch(reposUrl, { headers }),
     ]);
 
     if (!profileRes.ok) {
@@ -49,7 +49,33 @@ export async function GET(req: Request) {
     const profile = await profileRes.json();
     const repos = await reposRes.json();
 
-    return NextResponse.json({ profile, repos });
+    // Try to fetch total contributions using GitHub GraphQL if token is available
+    let contributionsTotal: number | null = null;
+    if (token) {
+      try {
+        const graphqlRes = await fetch("https://api.github.com/graphql", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: `query($login: String!) { user(login: $login) { contributionsCollection { contributionCalendar { totalContributions } } } }`,
+            variables: { login: username },
+          }),
+        });
+
+        if (graphqlRes.ok) {
+          const gqlJson = await graphqlRes.json();
+          contributionsTotal =
+            gqlJson?.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions ?? null;
+        }
+      } catch (e) {
+        // ignore GraphQL errors, contributionsTotal will remain null
+      }
+    }
+
+    return NextResponse.json({ profile, repos, contributionsTotal });
   } catch (err: any) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }

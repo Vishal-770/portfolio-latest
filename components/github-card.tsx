@@ -73,6 +73,14 @@ export function GitHubCard() {
                   {data.profile.public_repos}
                 </span>
               </div>
+              {typeof data.contributionsTotal !== "undefined" && data.contributionsTotal !== null ? (
+                <div className="px-2 py-1 bg-muted/30 rounded">
+                  Contributions:{" "}
+                  <span className="font-medium text-foreground">
+                    {data.contributionsTotal}
+                  </span>
+                </div>
+              ) : null}
               <div className="px-2 py-1 bg-muted/30 rounded">
                 Followers:{" "}
                 <span className="font-medium text-foreground">

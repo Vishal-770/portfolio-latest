@@ -10,7 +10,8 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Microsoft Edge ",
-  description: "Modern SERP-inspired portfolio showcasing projects and skills",
+  description:
+    "Vishal — Developer focused on polished web experiences: Next.js, TypeScript, and real projects.",
 };
 
 export default function RootLayout({

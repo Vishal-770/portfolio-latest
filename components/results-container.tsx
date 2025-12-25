@@ -37,11 +37,6 @@ export function ResultsContainer({
           </h2>
           <div className="space-y-3">
             <WrappedLeetCodeCard />
-            {show("github") || show("all") ? (
-              <div className="mt-2">
-                <GitHubCard />
-              </div>
-            ) : null}
           </div>
         </div>
       ) : null}

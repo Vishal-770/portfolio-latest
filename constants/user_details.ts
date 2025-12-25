@@ -1,6 +1,7 @@
 import { link } from "fs";
 
 export const Leetcode_Username = "amQBEsUk1H";
+export const Github_Username = "vishal-770";
 export const socialLinks = {
   github: "https://github.com/Vishal-770",
   linkedin:
@@ -10,6 +11,6 @@ export const socialLinks = {
   mail: "mailto:vishalwebdev07@gmail.com",
   geeks_forgeeks: "https://www.geeksforgeeks.org/profile/vishalwelx18",
   devfolio: "https://devfolio.co/@vishal_7707",
-  discord:"https://discord.com/users/832469847770267659",
+  discord: "https://discord.com/users/832469847770267659",
 };
-export const mail="vishalwebdev07@gmail.com`"
+export const mail = "vishalwebdev07@gmail.com`";

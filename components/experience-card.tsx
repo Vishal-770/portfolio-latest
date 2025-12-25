@@ -1,5 +1,5 @@
 import { Briefcase, Building2, Calendar, MapPin } from "lucide-react";
-import { experiences } from "@/constants/experiences";
+import { experiences, type Experience } from "@/constants/experiences";
 
 export function ExperienceCard() {
   const getTypeColor = (type: Experience["type"]) => {

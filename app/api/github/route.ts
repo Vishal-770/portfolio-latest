@@ -68,7 +68,8 @@ export async function GET(req: Request) {
         if (graphqlRes.ok) {
           const gqlJson = await graphqlRes.json();
           contributionsTotal =
-            gqlJson?.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions ?? null;
+            gqlJson?.data?.user?.contributionsCollection?.contributionCalendar
+              ?.totalContributions ?? null;
         }
       } catch (e) {
         // ignore GraphQL errors, contributionsTotal will remain null

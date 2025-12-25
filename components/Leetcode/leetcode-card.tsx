@@ -6,6 +6,7 @@ import { Zap, Target, Trophy } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { use } from "react";
+import LeetCodeHeatmap from "./LeetCodeHeatmap";
 
 export function LeetCodeCard() {
   const { data: stats, isLoading } = useQuery({
@@ -88,6 +89,7 @@ export function LeetCodeCard() {
           </div>
         </div>
       </article>
+      <LeetCodeHeatmap />
     </Link>
   );
 }

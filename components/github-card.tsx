@@ -4,6 +4,7 @@ import { Github } from "lucide-react";
 import { socialLinks } from "@/constants/user_details";
 import { useQuery } from "@tanstack/react-query";
 import { fetchGitHubProfileByUrl } from "@/services/FetchGitHubProfile";
+import GitHubHeatMap from "./GithubHeatMap";
 
 export function GitHubCard() {
   const { data, isLoading, isError } = useQuery({
@@ -73,7 +74,8 @@ export function GitHubCard() {
                   {data.profile.public_repos}
                 </span>
               </div>
-              {typeof data.contributionsTotal !== "undefined" && data.contributionsTotal !== null ? (
+              {typeof data.contributionsTotal !== "undefined" &&
+              data.contributionsTotal !== null ? (
                 <div className="px-2 py-1 bg-muted/30 rounded">
                   Contributions:{" "}
                   <span className="font-medium text-foreground">
@@ -129,6 +131,7 @@ export function GitHubCard() {
           </div>
         )}
       </div>
+      <GitHubHeatMap />
     </article>
   );
 }

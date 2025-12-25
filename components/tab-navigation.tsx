@@ -37,7 +37,7 @@ export function TabNavigation({ activeTab, onChange }: TabNavigationProps) {
             >
               {tab.label}
               {activeTab === tab.id && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0078d4] dark:bg-[#4fc3f7]" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0078d4] dark:bg-[#4fc3f7]" />
               )}
             </button>
           ))}

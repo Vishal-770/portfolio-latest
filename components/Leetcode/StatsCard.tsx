@@ -35,7 +35,7 @@ const StatsCard: React.FC<DistributionCardProps> = ({
       </div>
 
       {/* Chart Section */}
-      <div className="flex-1 min-h-[56px] flex items-end">
+      <div className="flex-1 min-h-14 flex items-end">
         <DistributionChart data={data} />
       </div>
     </div>

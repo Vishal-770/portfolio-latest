@@ -16,5 +16,9 @@ export async function fetchGitHubProfileByUrl(githubUrl: string) {
   if (json.error)
     throw new Error(json.error || "Unknown error from GitHub API route");
 
-  return json as { profile: any; repos: any[] };
+  return json as {
+    profile: any;
+    repos: any[];
+    contributionsTotal?: number | null;
+  };
 }

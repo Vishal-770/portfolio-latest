@@ -146,7 +146,7 @@ export function SocialsCard() {
             className={`flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg border border-border/40 transition-all duration-200 group ${social.bgColor}`}
           >
             <div
-              className={`${social.color} transition-transform group-hover:scale-110 flex-shrink-0`}
+              className={`${social.color} transition-transform group-hover:scale-110 shrink-0`}
             >
               {social.icon}
             </div>
@@ -155,7 +155,7 @@ export function SocialsCard() {
                 <span className="text-xs sm:text-sm font-medium text-foreground truncate">
                   {social.name}
                 </span>
-                <ExternalLink className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                <ExternalLink className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </div>
               <p className="text-[10px] sm:text-xs text-muted-foreground truncate">
                 {social.username}

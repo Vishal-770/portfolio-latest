@@ -7,13 +7,16 @@ export function AboutCard() {
       </div>
 
       <p className="text-sm text-foreground/75 leading-relaxed mb-4">
-        Full-stack developer passionate about building beautiful, performant web applications. Specialized in modern
-        JavaScript frameworks and cloud technologies.
+        Full-stack developer passionate about building beautiful, performant web
+        applications. Specialized in modern JavaScript frameworks, cloud
+        technologies, and blockchain development.
       </p>
 
       <p className="text-xs text-foreground/60 leading-relaxed">
-        Always learning, always building. Open to collaborations and interesting projects.
+        Always learning, always building — from web2 apps to web3 integrations.
+        Open to collaborations and interesting projects in decentralized systems
+        and traditional web applications.
       </p>
     </article>
-  )
+  );
 }

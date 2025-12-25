@@ -1,24 +1,27 @@
+"use client";
+
+import { useState } from "react";
 import { TopNavigation } from "@/components/top-navigation";
 import { TabNavigation } from "@/components/tab-navigation";
-import { SearchHeader } from "@/components/search-header";
+
 import { ResultsContainer } from "@/components/results-container";
 import { ProfileSidebar } from "@/components/profile-sidebar";
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<string>("all");
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-200">
       <TopNavigation />
 
-      <TabNavigation />
+      <TabNavigation activeTab={activeTab} onChange={setActiveTab} />
 
-      <main className="max-w-full mx-auto pt-6 sm:pt-8 pb-12">
+      <main className="max-w-full mx-auto pt-2 sm:pt-3 pb-12">
         <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           {/* Main content area */}
           <div className="flex-1 min-w-0 order-2 lg:order-1">
-            <SearchHeader />
-
             <div className="mt-6 sm:mt-8">
-              <ResultsContainer />
+              <ResultsContainer activeTab={activeTab} />
             </div>
           </div>
 

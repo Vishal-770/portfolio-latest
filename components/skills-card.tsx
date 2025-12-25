@@ -1,10 +1,49 @@
 export function SkillsCard() {
   const skills = {
-    Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"],
-    Backend: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Firebase"],
-    "Tools & Platforms": ["Git", "Docker", "AWS", "Vercel", "GitHub"],
-    Other: ["REST APIs", "GraphQL", "WebSockets", "Testing", "CI/CD"],
-  }
+    Frontend: [
+      "React",
+      "Next.js",
+      "Shadcn UI",
+      "Tailwind CSS",
+      "GSAP",
+      "framer-motion",
+      "Bootstrap",
+      "Vanilla JavaScript",
+    ],
+    Backend: [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "Supabase",
+      "Firebase",
+      "PostgreSQL",
+      "MongoDB",
+      "drizzle-orm",
+    ],
+    "Platforms & Tools": [
+      "Git",
+      "Docker",
+      "Vercel",
+      "AWS",
+      "Axios",
+      "React Router",
+      "TanStack Query",
+      "React Hook Form",
+      "Zustand",
+      "Redux",
+    ],
+    Languages: [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "C++",
+      "C",
+      "Java",
+      "Solidity",
+    ],
+    Blockchain: ["Foundry", "thirdweb"],
+    Other: ["SEO", "REST APIs", "GraphQL", "WebSockets", "CI/CD"],
+  };
 
   return (
     <article className="bg-card border border-border/50 rounded-lg p-4">
@@ -14,12 +53,16 @@ export function SkillsCard() {
         <span>skills</span>
       </div>
 
-      <h2 className="text-base font-semibold text-primary mb-4">Technical Skills</h2>
+      <h2 className="text-base font-semibold text-primary mb-4">
+        Technical Skills
+      </h2>
 
       <div className="space-y-4">
         {Object.entries(skills).map(([category, skillList]) => (
           <div key={category}>
-            <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2.5">{category}</h4>
+            <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2.5">
+              {category}
+            </h4>
             <div className="flex flex-wrap gap-1.5">
               {skillList.map((skill) => (
                 <span
@@ -34,5 +77,5 @@ export function SkillsCard() {
         ))}
       </div>
     </article>
-  )
+  );
 }

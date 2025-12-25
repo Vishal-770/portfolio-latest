@@ -1,6 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import type React from "react";
+
+interface TabNavigationProps {
+  activeTab: string;
+  onChange: (tab: string) => void;
+}
 
 const tabs = [
   { id: "all", label: "All" },
@@ -8,15 +13,14 @@ const tabs = [
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
   { id: "leetcode", label: "LeetCode" },
-  { id: "gfg", label: "GFG" },
+  { id: "github", label: "GitHub" },
   { id: "hackathons", label: "Hackathons" },
   { id: "education", label: "Education" },
   { id: "socials", label: "Socials" },
   { id: "about", label: "About" },
 ];
 
-export function TabNavigation() {
-  const [activeTab, setActiveTab] = useState("all");
+export function TabNavigation({ activeTab, onChange }: TabNavigationProps) {
   return (
     <div className="sticky top-14 z-40 bg-white dark:bg-[#1b1b1b] border-b border-[#e5e5e5] dark:border-[#3b3b3b]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +28,7 @@ export function TabNavigation() {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => onChange(tab.id)}
               className={`relative px-4 py-3 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                 activeTab === tab.id
                   ? "text-[#0078d4] dark:text-[#4fc3f7]"

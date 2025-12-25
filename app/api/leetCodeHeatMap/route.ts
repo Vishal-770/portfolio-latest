@@ -1,5 +1,8 @@
-// app/api/leetcode/community/route.ts
+// app/api/leetcode/heatmap/route.ts
 import { NextResponse } from "next/server";
+
+// ✅ Explicit type for calendar
+type SubmissionCalendar = Record<string, number>;
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -20,31 +23,29 @@ export async function GET(req: Request) {
       query: `
         query ($username: String!) {
           matchedUser(username: $username) {
-            profile {
-              reputation
-              reputationDiff
-              solutionCount
-              solutionCountDiff
-              postViewCount
-              postViewCountDiff
-              categoryDiscussCount
-              categoryDiscussCountDiff
-            }
-            languageProblemCount {
-              languageName
-              problemsSolved
-            }
-            tagProblemCounts {
-              advanced { tagName problemsSolved }
-              intermediate { tagName problemsSolved }
-              fundamental { tagName problemsSolved }
+            userCalendar {
+              submissionCalendar
             }
           }
         }
       `,
       variables: { username },
     }),
+    next: { revalidate: 86400 }, // cache 24h
   });
 
-  return NextResponse.json(await res.json());
+  const json = await res.json();
+
+  const calendarStr = json.data.matchedUser.userCalendar.submissionCalendar;
+
+  // ✅ Parse + strongly type
+  const calendar: SubmissionCalendar = JSON.parse(calendarStr);
+
+  const values = Object.values(calendar); // now number[]
+
+  return NextResponse.json({
+    calendar,
+    totalSubmissions: values.reduce((sum, v) => sum + v, 0),
+    activeDays: values.filter((v) => v > 0).length,
+  });
 }

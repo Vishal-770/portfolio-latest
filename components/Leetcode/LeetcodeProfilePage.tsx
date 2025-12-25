@@ -5,8 +5,9 @@ import { Info } from "lucide-react";
 import LeetCodeHeatmap from "./LeetCodeHeatmap";
 import { RecentSubmissions } from "./recent-submissions";
 import { ContestCard } from "./ContestCard";
-import { DifficultyRing } from "./DifficultyRating";
+
 import { ProfileSidebar } from "./ProfileSidebar";
+import { LeetCodeWidget } from "./DifficultyRating";
 
 export function ProfileDashboard() {
   return (
@@ -49,7 +50,7 @@ export function ProfileDashboard() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="md:col-span-2">
-              <DifficultyRing />
+              <LeetCodeWidget />
             </div>
             <Card className="bg-[#282828] border-none text-white p-4 space-y-4 relative overflow-hidden flex flex-col justify-between">
               <div className="flex justify-between items-center">

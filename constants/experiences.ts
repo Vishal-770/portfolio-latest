@@ -18,7 +18,6 @@ export const experiences: Experience[] = [
     company: "DAO Community — VIT Chennai",
     location: " Chennai",
     duration: "2025 - Present ",
-    type: "freelance",
 
     description: [
       "Built the DAO Community website ",
@@ -32,7 +31,7 @@ export const experiences: Experience[] = [
     company: "Android Club — VIT Chennai",
     location: "Chennai",
     duration: "2025 - Present ",
-    type: "freelance",
+
     description: [
       "Took part in building the Android Club website",
       "Implemented frontend components and responsive layouts",

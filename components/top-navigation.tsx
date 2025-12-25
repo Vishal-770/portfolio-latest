@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export function TopNavigation() {
   const [showMenu, setShowMenu] = useState(false);
@@ -20,17 +21,12 @@ export function TopNavigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 gap-4">
           {/* Logo */}
-          <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-sm bg-[#0078d4] flex items-center justify-center">
-                <span className="text-sm font-bold text-white">V</span>
-              </div>
-              <span className="hidden sm:inline text-sm font-semibold text-[#1a1a1a] dark:text-white">
-                Vishal
-              </span>
-            </Link>
-          </div>
-
+          <Avatar>
+            <AvatarImage src="/image.png" alt="@shadcn" />
+            <AvatarFallback>V</AvatarFallback>
+            Vishal
+          </Avatar>
+         
           {/* Search bar - Edge style */}
           <div className="flex-1 max-w-xl hidden md:block">
             <div className="relative group">

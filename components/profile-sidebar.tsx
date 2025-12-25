@@ -7,6 +7,8 @@ import {
   Mail,
   ChevronRight,
 } from "lucide-react";
+import { mail, socialLinks } from "@/constants/user_details";
+import Image from "next/image";
 
 // LeetCode Icon Component
 const LeetCodeIcon = () => (
@@ -24,15 +26,18 @@ const GFGIcon = () => (
 
 export function ProfileSidebar() {
   return (
-    <div className="space-y-4 sm:space-y-5">
+    <div className="space-y-4 sm:space-y-5 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto lg:scrollbar-hide scrollbar-hide lg:pr-2">
       {/* Profile Card */}
       <div className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:shadow-sm transition-all">
         {/* Profile Image */}
         <div className="mb-4 sm:mb-5 flex justify-center">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-primary/70 to-accent/50 rounded-full flex items-center justify-center shadow-md border-2 border-border/30">
-            <Code2
-              className="w-10 h-10 sm:w-12 sm:h-12 text-primary-foreground"
-              strokeWidth={1.5}
+          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-linear-to-br from-primary/70 to-accent/50 rounded-full flex items-center justify-center shadow-md border-2 border-border/30">
+            <Image
+              src="/image.png"
+              alt="Profile Image"
+              width={96}
+              height={96}
+              className="rounded-full"
             />
           </div>
         </div>
@@ -42,7 +47,7 @@ export function ProfileSidebar() {
           Vishal
         </h2>
         <p className="text-xs font-semibold text-primary text-center mb-3 sm:mb-4 uppercase tracking-wider">
-          Full Stack Developer
+          Developer
         </p>
 
         {/* Bio */}
@@ -60,7 +65,7 @@ export function ProfileSidebar() {
               className="w-4 h-4 text-primary/60 shrink-0"
               strokeWidth={2}
             />
-            <span>India</span>
+            <span>Chennai, India</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-3 text-xs text-foreground/70">
             <Mail
@@ -71,7 +76,7 @@ export function ProfileSidebar() {
               href="mailto:vishalwelx18@gmail.com"
               className="text-primary hover:underline hover:text-primary/80 transition-colors truncate"
             >
-              vishalwelx18@gmail.com
+              {mail}
             </a>
           </div>
         </div>
@@ -85,7 +90,7 @@ export function ProfileSidebar() {
         </p>
         <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
           <a
-            href="https://github.com/yourusername"
+            href={socialLinks.github}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-foreground hover:bg-[#333]/20 dark:hover:bg-[#f0f6fc]/10 hover:border-border/80 transition-all duration-200"
@@ -95,7 +100,7 @@ export function ProfileSidebar() {
             <Github className="w-4 h-4" strokeWidth={2} />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href={socialLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 hover:border-border/80 transition-all duration-200"
@@ -105,7 +110,7 @@ export function ProfileSidebar() {
             <Linkedin className="w-4 h-4" strokeWidth={2} />
           </a>
           <a
-            href="https://twitter.com/yourusername"
+            href={socialLinks.twitter}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-foreground hover:bg-foreground/10 hover:border-border/80 transition-all duration-200"
@@ -115,7 +120,7 @@ export function ProfileSidebar() {
             <Twitter className="w-4 h-4" strokeWidth={2} />
           </a>
           <a
-            href="https://leetcode.com/yourusername"
+            href={socialLinks.leetcode}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-[#FFA116] hover:bg-[#FFA116]/10 hover:border-border/80 transition-all duration-200"
@@ -125,7 +130,7 @@ export function ProfileSidebar() {
             <LeetCodeIcon />
           </a>
           <a
-            href="https://www.geeksforgeeks.org/user/vishalwelx18"
+            href={socialLinks.geeks_forgeeks}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-[#2F8D46] hover:bg-[#2F8D46]/10 hover:border-border/80 transition-all duration-200"
@@ -135,7 +140,7 @@ export function ProfileSidebar() {
             <GFGIcon />
           </a>
           <a
-            href="mailto:vishalwelx18@gmail.com"
+            href={socialLinks.mail}
             className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-red-500 hover:bg-red-500/10 hover:border-border/80 transition-all duration-200"
             aria-label="Email"
             title="Email"
@@ -154,24 +159,13 @@ export function ProfileSidebar() {
         <div className="space-y-2 sm:space-y-3 text-xs">
           <div className="flex justify-between items-start gap-2">
             <span className="text-foreground/60">Currently Learning</span>
-            <span className="font-medium text-foreground text-right">
-              AI/ML with LLMs
-            </span>
+            <span className="font-medium text-foreground text-right">Web3</span>
           </div>
           <div className="flex justify-between items-start gap-2">
             <span className="text-foreground/60">Favorite Stack</span>
             <span className="font-medium text-foreground text-right">
               Next.js + TS
             </span>
-          </div>
-          <div className="flex justify-between items-start gap-2">
-            <span className="text-foreground/60">Open Source</span>
-            <a
-              href="#"
-              className="text-primary hover:text-primary/80 font-medium inline-flex items-center gap-0.5"
-            >
-              10+ <ChevronRight className="w-3 h-3" strokeWidth={2.5} />
-            </a>
           </div>
         </div>
       </div>
@@ -184,7 +178,7 @@ export function ProfileSidebar() {
         <div className="space-y-2 sm:space-y-2.5 text-xs">
           <div className="flex justify-between items-center pb-2 border-b border-border/30">
             <span className="text-foreground/60">Total Projects</span>
-            <span className="font-bold text-foreground">15+</span>
+            <span className="font-bold text-foreground">10+</span>
           </div>
           <div className="flex justify-between items-center pb-2 border-b border-border/30">
             <span className="text-foreground/60">Technologies</span>
@@ -192,7 +186,7 @@ export function ProfileSidebar() {
           </div>
           <div className="flex justify-between items-center">
             <span className="text-foreground/60">Experience</span>
-            <span className="font-bold text-foreground">5+ yrs</span>
+            <span className="font-bold text-foreground">2+ yrs</span>
           </div>
         </div>
       </div>

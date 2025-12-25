@@ -25,10 +25,18 @@ export default function LeetCodeHeatmap({
 
   if (isLoading || !data) {
     return (
-      <div className={`grid grid-cols-[repeat(${weeks},1fr)] gap-[3px] pt-4`}>
-        {placeholder.map((c, i) => (
-          <div key={i} className={`aspect-square rounded-[1px] ${c}`} />
-        ))}
+      <div className="overflow-x-auto">
+        <div
+          className="grid gap-[3px] pt-4"
+          style={{
+            gridTemplateColumns: `repeat(${weeks}, minmax(12px, 1fr))`,
+            minWidth: `${weeks * 12}px`,
+          }}
+        >
+          {placeholder.map((c, i) => (
+            <div key={i} className={`aspect-square rounded-[1px] ${c}`} />
+          ))}
+        </div>
       </div>
     );
   }
@@ -44,10 +52,18 @@ export default function LeetCodeHeatmap({
   if (tsKeys.length === 0) {
     // nothing to render, fallback to placeholder
     return (
-      <div className={`grid grid-cols-[repeat(${weeks},1fr)] gap-[3px] pt-4`}>
-        {placeholder.map((c, i) => (
-          <div key={i} className={`aspect-square rounded-[1px] ${c}`} />
-        ))}
+      <div className="overflow-x-auto">
+        <div
+          className="grid gap-[3px] pt-4"
+          style={{
+            gridTemplateColumns: `repeat(${weeks}, minmax(12px, 1fr))`,
+            minWidth: `${weeks * 12}px`,
+          }}
+        >
+          {placeholder.map((c, i) => (
+            <div key={i} className={`aspect-square rounded-[1px] ${c}`} />
+          ))}
+        </div>
       </div>
     );
   }
@@ -82,17 +98,25 @@ export default function LeetCodeHeatmap({
   }
 
   return (
-    <div className={`grid grid-cols-[repeat(${weeks},1fr)] gap-[3px] pt-4`}>
-      {columns.map((col, ci) => (
-        <div key={ci} className="flex flex-col gap-[3px]">
-          {col.map((v, di) => (
-            <div
-              key={di}
-              className={`aspect-square rounded-[1px] ${colorFor(v)}`}
-            />
-          ))}
-        </div>
-      ))}
+    <div className="overflow-x-auto">
+      <div
+        className="grid gap-[3px] pt-4"
+        style={{
+          gridTemplateColumns: `repeat(${weeks}, minmax(12px, 1fr))`,
+          minWidth: `${weeks * 12}px`,
+        }}
+      >
+        {columns.map((col, ci) => (
+          <div key={ci} className="flex flex-col gap-[3px]">
+            {col.map((v, di) => (
+              <div
+                key={di}
+                className={`aspect-square rounded-[1px] ${colorFor(v)}`}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

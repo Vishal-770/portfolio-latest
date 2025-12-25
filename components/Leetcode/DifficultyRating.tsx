@@ -130,7 +130,7 @@ export const LeetCodeWidget: React.FC = () => {
     // Changed container to w-fit and flex to hug content tightly
     <div className="bg-[#1c1c1c] w-full rounded-xl p-4 shadow-2xl  font-sans border border-[#2d2d2d] flex flex-row items-center justify-evenly gap-6">
       {/* Left: Circular Chart */}
-      <div className="flex flex-col items-center justify-center relative flex-shrink-0">
+      <div className="flex flex-col items-center justify-center relative shrink-0">
         <div className="relative" style={{ width: size, height: size }}>
           <svg
             className="w-full h-full transform"

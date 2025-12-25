@@ -8,8 +8,50 @@ import { ContestCard } from "./ContestCard";
 
 import { ProfileSidebar } from "./ProfileSidebar";
 import { LeetCodeWidget } from "./DifficultyRating";
+import StatsCard from "./StatsCard";
+import { useMemo } from "react";
+export interface DistributionDataPoint {
+  id: number;
+  value: number;
+  isActive: boolean;
+  label?: string;
+}
 
+export interface DistributionCardProps {
+  title: string;
+  percentage: string;
+  data: DistributionDataPoint[];
+  className?: string;
+}
 export function ProfileDashboard() {
+  const chartData: DistributionDataPoint[] = useMemo(() => {
+    const points: DistributionDataPoint[] = [
+      { id: 1, value: 8, isActive: false },
+      { id: 2, value: 12, isActive: false },
+      { id: 3, value: 15, isActive: false },
+      { id: 4, value: 25, isActive: false },
+      { id: 5, value: 45, isActive: false },
+      { id: 6, value: 80, isActive: false }, // Peak near active
+      { id: 7, value: 140, isActive: false }, // Highest gray peak
+      { id: 8, value: 95, isActive: true }, // The Active Bar (Orange)
+      { id: 9, value: 75, isActive: false },
+      { id: 10, value: 55, isActive: false },
+      { id: 11, value: 40, isActive: false },
+      { id: 12, value: 30, isActive: false },
+      { id: 13, value: 25, isActive: false },
+      { id: 14, value: 20, isActive: false },
+      { id: 15, value: 18, isActive: false },
+      { id: 16, value: 15, isActive: false },
+      { id: 17, value: 15, isActive: false },
+      { id: 18, value: 15, isActive: false },
+      { id: 19, value: 15, isActive: false },
+      { id: 20, value: 15, isActive: false },
+      { id: 21, value: 15, isActive: false },
+      { id: 22, value: 15, isActive: false },
+    ];
+    return points;
+  }, []);
+
   return (
     <div className="bg-[#1a1a1a] min-h-screen text-white p-4 lg:p-10 font-sans selection:bg-orange-500/30">
       <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-12">
@@ -24,28 +66,7 @@ export function ProfileDashboard() {
             <div className="md:col-span-2 h-[180px]">
               <ContestCard />
             </div>
-            <Card className="bg-[#282828] border-none text-white p-4 flex flex-col justify-between h-[180px]">
-              <div className="space-y-1">
-                <p className="text-[11px] text-[#9e9e9e] font-bold uppercase tracking-wider">
-                  Top
-                </p>
-                <p className="text-2xl font-bold">49.73%</p>
-              </div>
-              <div className="flex items-end gap-[1px] h-24 pt-4">
-                {[
-                  5, 8, 12, 18, 25, 35, 45, 65, 100, 75, 55, 40, 30, 20, 15, 10,
-                  8, 5,
-                ].map((h, i) => (
-                  <div
-                    key={i}
-                    className={`flex-1 rounded-sm ${
-                      i === 8 ? "bg-orange-400" : "bg-[#3e3e3e]"
-                    }`}
-                    style={{ height: `${h}%` }}
-                  />
-                ))}
-              </div>
-            </Card>
+            <StatsCard title="Top" percentage="49.73%" data={chartData} />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

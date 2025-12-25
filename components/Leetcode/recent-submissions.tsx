@@ -56,20 +56,27 @@ export function RecentSubmissions() {
         )}
 
         {!isLoading && items.length === 0 && (
-          <div className="p-4 text-sm text-[#9e9e9e]">No recent accepted submissions</div>
+          <div className="p-4 text-sm text-[#9e9e9e]">
+            No recent accepted submissions
+          </div>
         )}
 
-        {!isLoading && items.map((sub, i) => (
-          <div
-            key={i}
-            className={`flex items-center justify-between px-4 py-3 hover:bg-[#3e3e3e30] transition-colors cursor-pointer ${
-              i % 2 === 0 ? "bg-transparent" : "bg-[#3e3e3e10]"
-            }`}
-          >
-            <span className="text-sm font-medium text-white">{sub.title}</span>
-            <span className="text-xs text-[#9e9e9e] font-medium">{sub.timeAgo}</span>
-          </div>
-        ))}
+        {!isLoading &&
+          items.map((sub, i) => (
+            <div
+              key={i}
+              className={`flex items-center justify-between px-4 py-3 hover:bg-[#3e3e3e30] transition-colors cursor-pointer ${
+                i % 2 === 0 ? "bg-transparent" : "bg-[#3e3e3e10]"
+              }`}
+            >
+              <span className="text-sm font-medium text-white">
+                {sub.title}
+              </span>
+              <span className="text-xs text-[#9e9e9e] font-medium">
+                {sub.timeAgo}
+              </span>
+            </div>
+          ))}
       </div>
     </Card>
   );

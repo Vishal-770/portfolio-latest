@@ -26,7 +26,7 @@ const GFGIcon = () => (
 
 export function ProfileSidebar() {
   return (
-    <div className="space-y-4 sm:space-y-5 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto lg:scrollbar-hide scrollbar-hide lg:pr-2">
+    <div className="space-y-4 sm:space-y-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto scrollbar-hide lg:pb-6">
       {/* Profile Card */}
       <div className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:shadow-sm transition-all">
         {/* Profile Image */}

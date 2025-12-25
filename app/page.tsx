@@ -27,9 +27,7 @@ export default function Home() {
 
           {/* Right sidebar with profile info - Shows first on mobile, on right on desktop */}
           <aside className="w-full lg:w-80 shrink-0 order-1 lg:order-2">
-            <div className="lg:sticky lg:top-24 lg:pt-6 lg:max-h-[calc(100vh-6rem)] lg:overflow-auto lg:scrollbar-hide">
-              <ProfileSidebar />
-            </div>
+            <ProfileSidebar />
           </aside>
         </div>
       </main>

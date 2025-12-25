@@ -1,6 +1,9 @@
 import { Trophy, Calendar, Users, Award, ExternalLink } from "lucide-react";
+import hackathonsData, {
+  Hackathon as HackathonConst,
+} from "../constants/hackathons";
 
-interface Hackathon {
+interface HackathonView {
   id: number;
   name: string;
   organizer: string;
@@ -11,64 +14,31 @@ interface Hackathon {
   teamSize: number;
   prize?: string;
   link?: string;
+  github?: string;
+  showcase?: string;
   tags: string[];
 }
 
 export function HackathonsCard() {
-  const hackathons: Hackathon[] = [
-    {
-      id: 1,
-      name: "HackMIT 2024",
-      organizer: "MIT",
-      date: "September 2024",
-      position: "1st Place",
-      project: "AI-Powered Healthcare Assistant",
-      description:
-        "Built an AI assistant that helps patients understand medical reports and schedule appointments.",
-      teamSize: 4,
-      prize: "$10,000",
-      link: "https://devpost.com/project",
-      tags: ["OpenAI", "React", "Node.js", "MongoDB"],
-    },
-    {
-      id: 2,
-      name: "Google Cloud Hackathon",
-      organizer: "Google",
-      date: "July 2024",
-      position: "2nd Place",
-      project: "Smart City Traffic Management",
-      description:
-        "Real-time traffic optimization system using IoT sensors and machine learning.",
-      teamSize: 3,
-      prize: "$5,000",
-      tags: ["GCP", "TensorFlow", "Python", "IoT"],
-    },
-    {
-      id: 3,
-      name: "ETHGlobal NYC",
-      organizer: "ETHGlobal",
-      date: "April 2024",
-      position: "Best DeFi Project",
-      project: "Decentralized Micro-Lending Platform",
-      description:
-        "Peer-to-peer lending platform with smart contracts for underbanked communities.",
-      teamSize: 4,
-      prize: "$3,000",
-      tags: ["Solidity", "React", "Ethereum", "Web3.js"],
-    },
-    {
-      id: 4,
-      name: "MLH Fellowship Hackathon",
-      organizer: "Major League Hacking",
-      date: "January 2024",
-      position: "Top 10 Finalist",
-      project: "Code Review AI Bot",
-      description:
-        "GitHub bot that provides intelligent code review suggestions using LLMs.",
-      teamSize: 2,
-      tags: ["Python", "GitHub API", "OpenAI", "Docker"],
-    },
-  ];
+  const hackathons: HackathonView[] = hackathonsData.map(
+    (h: HackathonConst, i) => ({
+      id: i + 1,
+      name: h.name,
+      organizer: h.team || "",
+      date: `${h.year}`,
+      position: h.place,
+      project: h.project,
+      description: h.description,
+      teamSize: (h.contributors || []).filter(Boolean).length || 1,
+      prize: undefined,
+      link: h.link,
+
+      tags: (h.track || "")
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean),
+    })
+  );
 
   const getPositionColor = (position: string) => {
     if (position.includes("1st"))
@@ -112,16 +82,30 @@ export function HackathonsCard() {
                   <h3 className="text-sm font-semibold text-foreground">
                     {hackathon.name}
                   </h3>
-                  {hackathon.link && (
-                    <a
-                      href={hackathon.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary/80"
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {hackathon.link && (
+                      <a
+                        href={hackathon.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-primary/80"
+                        aria-label="GitHub"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                    {hackathon.showcase && (
+                      <a
+                        href={hackathon.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-primary/80"
+                        aria-label="Showcase"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <p className="text-xs text-muted-foreground">
                   {hackathon.organizer}

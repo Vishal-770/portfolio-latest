@@ -1,3 +1,4 @@
+"use client";
 import type React from "react";
 import {
   FileText,
@@ -7,38 +8,18 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useQuery } from "@tanstack/react-query";
+import { fetchLeetCodeRecentSolved } from "@/services/FetchLeetCodeRecentSolved";
+import { Leetcode_Username } from "@/constants/user_details";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function RecentSubmissions() {
-  const submissions = [
-    { title: "Network Delay Time", time: "11 hours ago" },
-    { title: "Cheapest Flights Within K Stops", time: "11 hours ago" },
-    { title: "Path With Minimum Effort", time: "11 hours ago" },
-    { title: "Shortest Path in Binary Matrix", time: "3 days ago" },
-    { title: "Find Eventual Safe States", time: "7 days ago" },
-    { title: "Course Schedule II", time: "7 days ago" },
-    { title: "Course Schedule", time: "7 days ago" },
-    { title: "Word Ladder II", time: "11 days ago" },
-    { title: "Count Square Sum Triples", time: "17 days ago" },
-    { title: "Count Odd Numbers in an Interval Range", time: "18 days ago" },
-  ];
+  const { data, isLoading } = useQuery({
+    queryKey: ["leetcode-recent", Leetcode_Username],
+    queryFn: () => fetchLeetCodeRecentSolved(Leetcode_Username, 15),
+  });
 
-  const extendedSubmissions = [
-    { title: "Network Delay Time", time: "11 hours ago" },
-    { title: "Cheapest Flights Within K Stops", time: "11 hours ago" },
-    { title: "Path With Minimum Effort", time: "11 hours ago" },
-    { title: "Shortest Path in Binary Matrix", time: "3 days ago" },
-    { title: "First Eventual Safe States", time: "7 days ago" },
-    { title: "Course Schedule II", time: "7 days ago" },
-    { title: "Course Schedule", time: "7 days ago" },
-    { title: "Word Ladder II", time: "11 days ago" },
-    { title: "Count Square Sum Triples", time: "17 days ago" },
-    { title: "Count Odd Numbers in an Interval Range", time: "18 days ago" },
-    { title: "Count Partitions with Even Sum Difference", time: "20 days ago" },
-    { title: "Count Collisions on a Road", time: "21 days ago" },
-    { title: "Word Ladder", time: "22 days ago" },
-    { title: "Number of Enclaves", time: "23 days ago" },
-    { title: "Surrounded Regions", time: "23 days ago" },
-  ];
+  const items = data ?? [];
 
   return (
     <Card className="bg-[#282828] border-none overflow-hidden">
@@ -66,7 +47,19 @@ export function RecentSubmissions() {
       </div>
 
       <div className="divide-y divide-[#3e3e3e]">
-        {extendedSubmissions.map((sub, i) => (
+        {isLoading && (
+          <div className="p-4">
+            <Skeleton className="h-3 w-full mb-3" />
+            <Skeleton className="h-3 w-full mb-3" />
+            <Skeleton className="h-3 w-full" />
+          </div>
+        )}
+
+        {!isLoading && items.length === 0 && (
+          <div className="p-4 text-sm text-[#9e9e9e]">No recent accepted submissions</div>
+        )}
+
+        {!isLoading && items.map((sub, i) => (
           <div
             key={i}
             className={`flex items-center justify-between px-4 py-3 hover:bg-[#3e3e3e30] transition-colors cursor-pointer ${
@@ -74,9 +67,7 @@ export function RecentSubmissions() {
             }`}
           >
             <span className="text-sm font-medium text-white">{sub.title}</span>
-            <span className="text-xs text-[#9e9e9e] font-medium">
-              {sub.time}
-            </span>
+            <span className="text-xs text-[#9e9e9e] font-medium">{sub.timeAgo}</span>
           </div>
         ))}
       </div>

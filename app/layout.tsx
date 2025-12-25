@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import QueryProvider from "@/components/ui/QueryProvider";
-import { Analytics } from "@vercel/analytics/next";
+
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 

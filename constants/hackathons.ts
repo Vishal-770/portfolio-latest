@@ -78,6 +78,7 @@ const hackathons: Hackathon[] = [
     track: "Web3",
     team: "Git Pushers",
     project: "HACKX",
+    
     place: "Top 8",
     description:
       "HACKX is a decentralized platform that automates hackathon organization: transparent judging, GitHub verification for submissions, on-chain proof of participation and achievement NFTs, and smart contracts for automated reward distribution.",

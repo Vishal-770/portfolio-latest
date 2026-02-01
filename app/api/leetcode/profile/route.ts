@@ -9,7 +9,14 @@ export async function GET(req: Request) {
   if (!username) {
     return NextResponse.json(
       { error: "username is required" },
-      { status: 400 }
+      {
+        status: 400,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
     );
   }
 
@@ -60,6 +67,7 @@ export async function GET(req: Request) {
         query,
         variables: { username },
       }),
+      cache: "no-store",
     });
 
     const data = await res.json();
@@ -67,15 +75,35 @@ export async function GET(req: Request) {
     if (data.errors) {
       return NextResponse.json(
         { error: "Failed to fetch profile data", details: data.errors },
-        { status: 500 }
+        {
+          status: 500,
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
       );
     }
 
-    return NextResponse.json(data);
+    return NextResponse.json(data, {
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
   } catch (error) {
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
     );
   }
 }

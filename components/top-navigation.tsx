@@ -26,7 +26,7 @@ export function TopNavigation() {
             <AvatarFallback>V</AvatarFallback>
             Vishal
           </Avatar>
-         
+
           {/* Search bar - Edge style */}
           <div className="flex-1 max-w-xl hidden md:block">
             <div className="relative group">
@@ -56,33 +56,33 @@ export function TopNavigation() {
           {/* Right actions */}
           <div className="flex items-center gap-1">
             <ThemeToggle />
-            <button
-              className="p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors"
+            <div
+              className="p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors cursor-default"
               title="Settings"
             >
               <Settings className="w-5 h-5" strokeWidth={1.5} />
-            </button>
-            <button
-              className="hidden sm:flex p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors"
+            </div>
+            <div
+              className="hidden sm:flex p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors cursor-default"
               title="Help"
             >
               <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
-            </button>
+            </div>
 
             {/* Apps grid */}
             <div className="hidden md:block relative">
-              <button
-                className="p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors"
+              <div
+                className="p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors cursor-default"
                 title="Apps"
               >
                 <Grid3x3Gap className="w-5 h-5" strokeWidth={1.5} />
-              </button>
+              </div>
             </div>
 
             {/* Profile */}
-            <button className="ml-1 p-1.5 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors border border-[#e5e5e5] dark:border-[#404040] hover:border-[#0078d4]">
+            <div className="ml-1 p-1.5 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors border border-[#e5e5e5] dark:border-[#404040] hover:border-[#0078d4] cursor-default">
               <User className="w-5 h-5" strokeWidth={1.5} />
-            </button>
+            </div>
 
             {/* Menu */}
             <button

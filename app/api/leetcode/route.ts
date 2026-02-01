@@ -9,7 +9,14 @@ export async function GET(req: Request) {
   if (!username) {
     return NextResponse.json(
       { error: "username is required" },
-      { status: 400 }
+      {
+        status: 400,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
     );
   }
 
@@ -17,8 +24,8 @@ export async function GET(req: Request) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Referer": "https://leetcode.com",
-      "User-Agent": "Mozilla/5.0"
+      Referer: "https://leetcode.com",
+      "User-Agent": "Mozilla/5.0",
     },
     body: JSON.stringify({
       query: `
@@ -36,27 +43,35 @@ export async function GET(req: Request) {
           }
         }
       `,
-      variables: { username }
+      variables: { username },
     }),
-    next: { revalidate: 86400 } // 24h cache
+    cache: "no-store",
   });
 
   const json = await res.json();
 
   if (!json?.data?.matchedUser) {
-    return NextResponse.json({ error: "User not found" }, { status: 404 });
+    return NextResponse.json(
+      { error: "User not found" },
+      {
+        status: 404,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 
   // ---- TOTAL QUESTIONS SOLVED ----
-  const solvedArray =
-    json.data.matchedUser.submitStatsGlobal.acSubmissionNum;
+  const solvedArray = json.data.matchedUser.submitStatsGlobal.acSubmissionNum;
 
   const totalSolved =
     solvedArray.find((d: any) => d.difficulty === "All")?.count || 0;
 
   // ---- SUBMISSIONS (PAST 1 YEAR) & ACTIVE DAYS ----
-  const calendarStr =
-    json.data.matchedUser.userCalendar.submissionCalendar;
+  const calendarStr = json.data.matchedUser.userCalendar.submissionCalendar;
 
   const calendar = JSON.parse(calendarStr);
 
@@ -68,9 +83,18 @@ export async function GET(req: Request) {
     if (v > 0) activeDays++;
   });
 
-  return NextResponse.json({
-    totalSolved,
-    submissionsLastYear,
-    activeDays
-  });
+  return NextResponse.json(
+    {
+      totalSolved,
+      submissionsLastYear,
+      activeDays,
+    },
+    {
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }
+  );
 }

@@ -6,7 +6,17 @@ export async function GET(req: Request) {
   const username = searchParams.get("username");
 
   if (!username) {
-    return NextResponse.json({ error: "username required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "username required" },
+      {
+        status: 400,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 
   const res = await fetch("https://leetcode.com/graphql", {
@@ -29,7 +39,7 @@ export async function GET(req: Request) {
       `,
       variables: { username },
     }),
-    next: { revalidate: 86400 },
+    cache: "no-store",
   });
 
   const json = await res.json();
@@ -38,26 +48,51 @@ export async function GET(req: Request) {
   if (json.errors) {
     return NextResponse.json(
       { error: "LeetCode GraphQL error", details: json.errors },
-      { status: 502 }
+      {
+        status: 502,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
     );
   }
 
   // ✅ User has never attended a contest
   if (!json.data || !json.data.userContestRanking) {
-    return NextResponse.json({
-      rating: null,
-      attended: 0,
-      globalRanking: null,
-      totalParticipants: null,
-    });
+    return NextResponse.json(
+      {
+        rating: null,
+        attended: 0,
+        globalRanking: null,
+        totalParticipants: null,
+      },
+      {
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 
   const contest = json.data.userContestRanking;
 
-  return NextResponse.json({
-    rating: contest.rating,
-    attended: contest.attendedContestsCount,
-    globalRanking: contest.globalRanking,
-    totalParticipants: contest.totalParticipants,
-  });
+  return NextResponse.json(
+    {
+      rating: contest.rating,
+      attended: contest.attendedContestsCount,
+      globalRanking: contest.globalRanking,
+      totalParticipants: contest.totalParticipants,
+    },
+    {
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }
+  );
 }

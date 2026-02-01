@@ -13,4 +13,4 @@ export const socialLinks = {
   devfolio: "https://devfolio.co/@vishal_7707",
   discord: "https://discord.com/users/832469847770267659",
 };
-export const mail = "vishalwebdev07@gmail.com`";
+export const mail = "vishalwebdev07";

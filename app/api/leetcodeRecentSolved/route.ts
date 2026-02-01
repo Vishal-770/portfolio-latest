@@ -7,7 +7,17 @@ export async function GET(req: Request) {
   const limit = Number(searchParams.get("limit") ?? 15);
 
   if (!username) {
-    return NextResponse.json({ error: "username required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "username required" },
+      {
+        status: 400,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 
   const res = await fetch("https://leetcode.com/graphql", {
@@ -31,7 +41,7 @@ export async function GET(req: Request) {
       `,
       variables: { username, limit },
     }),
-    next: { revalidate: 3600 }, // 1 hour cache
+    cache: "no-store",
   });
 
   const json = await res.json();
@@ -45,7 +55,13 @@ export async function GET(req: Request) {
       timeAgo: timeAgo(Number(s.timestamp)),
     }));
 
-  return NextResponse.json(accepted);
+  return NextResponse.json(accepted, {
+    headers: {
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    },
+  });
 }
 
 // helper

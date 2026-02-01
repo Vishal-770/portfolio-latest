@@ -6,7 +6,17 @@ export async function GET(req: Request) {
   const username = searchParams.get("username");
 
   if (!username) {
-    return NextResponse.json({ error: "username required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "username required" },
+      {
+        status: 400,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 
   const res = await fetch("https://leetcode.com/graphql", {
@@ -39,6 +49,7 @@ export async function GET(req: Request) {
       `,
       variables: { username },
     }),
+    cache: "no-store",
   });
 
   const json = await res.json();
@@ -61,19 +72,28 @@ export async function GET(req: Request) {
     json.data.allQuestionsCount.map((d: any) => [d.difficulty, d.count])
   );
 
-  return NextResponse.json({
-    solved: {
-      all: solved.All,
-      easy: solved.Easy,
-      medium: solved.Medium,
-      hard: solved.Hard,
+  return NextResponse.json(
+    {
+      solved: {
+        all: solved.All,
+        easy: solved.Easy,
+        medium: solved.Medium,
+        hard: solved.Hard,
+      },
+      totalProblems: {
+        all: totals.All,
+        easy: totals.Easy,
+        medium: totals.Medium,
+        hard: totals.Hard,
+      },
+      attempting: attempted.All - solved.All,
     },
-    totalProblems: {
-      all: totals.All,
-      easy: totals.Easy,
-      medium: totals.Medium,
-      hard: totals.Hard,
-    },
-    attempting: attempted.All - solved.All,
-  });
+    {
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }
+  );
 }

@@ -1,4 +1,11 @@
-import { Trophy, Calendar, Users, Award, ExternalLink } from "lucide-react";
+import {
+  Trophy,
+  Calendar,
+  Users,
+  Award,
+  ExternalLink,
+  FileText,
+} from "lucide-react";
 import hackathonsData, {
   Hackathon as HackathonConst,
 } from "../constants/hackathons";
@@ -17,6 +24,7 @@ interface HackathonView {
   github?: string;
   showcase?: string;
   tags: string[];
+  certificateLinks?: string[];
 }
 
 export function HackathonsCard() {
@@ -30,14 +38,15 @@ export function HackathonsCard() {
       project: h.project,
       description: h.description,
       teamSize: (h.contributors || []).filter(Boolean).length || 1,
-      prize: undefined,
+      prize: h.prize,
       link: h.link,
+      certificateLinks: h.certificateLinks,
 
       tags: (h.track || "")
         .split(",")
         .map((t) => t.trim())
         .filter(Boolean),
-    })
+    }),
   );
 
   const getPositionColor = (position: string) => {
@@ -89,7 +98,7 @@ export function HackathonsCard() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:text-primary/80"
-                        aria-label="GitHub"
+                        aria-label="Project Link"
                       >
                         <ExternalLink className="w-3 h-3" />
                       </a>
@@ -105,6 +114,23 @@ export function HackathonsCard() {
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
+                    {hackathon.certificateLinks &&
+                      hackathon.certificateLinks.length > 0 && (
+                        <div className="flex items-center gap-1">
+                          {hackathon.certificateLinks.map((certLink, idx) => (
+                            <a
+                              key={idx}
+                              href={certLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary hover:text-primary/80"
+                              aria-label={`Certificate ${idx + 1}`}
+                            >
+                              <FileText className="w-3 h-3" />
+                            </a>
+                          ))}
+                        </div>
+                      )}
                   </div>
                 </div>
                 <p className="text-xs text-muted-foreground">
@@ -114,7 +140,7 @@ export function HackathonsCard() {
               <div className="flex flex-col items-end gap-1">
                 <span
                   className={`text-xs px-2 py-0.5 rounded-full border font-medium ${getPositionColor(
-                    hackathon.position
+                    hackathon.position,
                   )}`}
                 >
                   <Award className="w-3 h-3 inline mr-1" />

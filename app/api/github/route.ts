@@ -8,7 +8,14 @@ export async function GET(req: Request) {
     if (!username) {
       return NextResponse.json(
         { error: "username query param required" },
-        { status: 400 }
+        {
+          status: 400,
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
       );
     }
 
@@ -24,8 +31,8 @@ export async function GET(req: Request) {
     const reposUrl = `https://api.github.com/users/${username}/repos?per_page=6&sort=updated`;
 
     const [profileRes, reposRes] = await Promise.all([
-      fetch(profileUrl, { headers }),
-      fetch(reposUrl, { headers }),
+      fetch(profileUrl, { headers, cache: "no-store" }),
+      fetch(reposUrl, { headers, cache: "no-store" }),
     ]);
 
     if (!profileRes.ok) {
@@ -35,14 +42,28 @@ export async function GET(req: Request) {
           error: `Failed to fetch profile: ${profileRes.status}`,
           details: err,
         },
-        { status: 502 }
+        {
+          status: 502,
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
       );
     }
     if (!reposRes.ok) {
       const err = await reposRes.text();
       return NextResponse.json(
         { error: `Failed to fetch repos: ${reposRes.status}`, details: err },
-        { status: 502 }
+        {
+          status: 502,
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
       );
     }
 
@@ -59,6 +80,7 @@ export async function GET(req: Request) {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
+          cache: "no-store",
           body: JSON.stringify({
             query: `query($login: String!) { user(login: $login) { contributionsCollection { contributionCalendar { totalContributions } } } }`,
             variables: { login: username },
@@ -76,8 +98,27 @@ export async function GET(req: Request) {
       }
     }
 
-    return NextResponse.json({ profile, repos, contributionsTotal });
+    return NextResponse.json(
+      { profile, repos, contributionsTotal },
+      {
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   } catch (err: any) {
-    return NextResponse.json({ error: String(err) }, { status: 500 });
+    return NextResponse.json(
+      { error: String(err) },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 }

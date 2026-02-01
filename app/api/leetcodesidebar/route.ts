@@ -6,7 +6,17 @@ export async function GET(req: Request) {
   const username = searchParams.get("username");
 
   if (!username) {
-    return NextResponse.json({ error: "username required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "username required" },
+      {
+        status: 400,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 
   const res = await fetch("https://leetcode.com/graphql", {
@@ -44,7 +54,14 @@ export async function GET(req: Request) {
       `,
       variables: { username },
     }),
+    cache: "no-store",
   });
 
-  return NextResponse.json(await res.json());
+  return NextResponse.json(await res.json(), {
+    headers: {
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    },
+  });
 }

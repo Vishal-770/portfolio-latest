@@ -73,7 +73,7 @@ export function ProfileSidebar() {
               strokeWidth={2}
             />
             <a
-              href="mailto:vishalwelx18@gmail.com"
+              href="mailto:vishalwebdev07@gmail.com"
               className="text-primary hover:underline hover:text-primary/80 transition-colors truncate"
             >
               {mail}

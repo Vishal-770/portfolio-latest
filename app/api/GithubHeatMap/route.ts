@@ -7,7 +7,17 @@ export async function GET(req: Request) {
   const username = searchParams.get("username");
 
   if (!username) {
-    return NextResponse.json({ error: "username required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "username required" },
+      {
+        status: 400,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   }
 
   const res = await fetch("https://api.github.com/graphql", {
@@ -43,7 +53,14 @@ export async function GET(req: Request) {
   if (json.errors || !json.data?.user) {
     return NextResponse.json(
       { error: "GitHub GraphQL error", details: json.errors },
-      { status: 502 }
+      {
+        status: 502,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
     );
   }
 
@@ -65,9 +82,18 @@ export async function GET(req: Request) {
     if (day.contributionCount > 0) activeDays++;
   }
 
-  return NextResponse.json({
-    activeDays,
-    totalSubmissions,
-    calendar,
-  });
+  return NextResponse.json(
+    {
+      activeDays,
+      totalSubmissions,
+      calendar,
+    },
+    {
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }
+  );
 }

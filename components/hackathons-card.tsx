@@ -115,20 +115,24 @@ export function HackathonsCard() {
                       </a>
                     )}
                     {hackathon.certificateLinks &&
-                      hackathon.certificateLinks.length > 0 && (
+                      hackathon.certificateLinks.filter(
+                        (link) => link && link.trim() !== "",
+                      ).length > 0 && (
                         <div className="flex items-center gap-1">
-                          {hackathon.certificateLinks.map((certLink, idx) => (
-                            <a
-                              key={idx}
-                              href={certLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-primary hover:text-primary/80"
-                              aria-label={`Certificate ${idx + 1}`}
-                            >
-                              <FileText className="w-3 h-3" />
-                            </a>
-                          ))}
+                          {hackathon.certificateLinks
+                            .filter((link) => link && link.trim() !== "")
+                            .map((certLink, idx) => (
+                              <a
+                                key={idx}
+                                href={certLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:text-primary/80"
+                                aria-label={`Certificate ${idx + 1}`}
+                              >
+                                <FileText className="w-3 h-3" />
+                              </a>
+                            ))}
                         </div>
                       )}
                   </div>
@@ -138,14 +142,16 @@ export function HackathonsCard() {
                 </p>
               </div>
               <div className="flex flex-col items-end gap-1">
-                <span
-                  className={`text-xs px-2 py-0.5 rounded-full border font-medium ${getPositionColor(
-                    hackathon.position,
-                  )}`}
-                >
-                  <Award className="w-3 h-3 inline mr-1" />
-                  {hackathon.position}
-                </span>
+                {hackathon.position && hackathon.position.trim() !== "" && (
+                  <span
+                    className={`text-xs px-2 py-0.5 rounded-full border font-medium ${getPositionColor(
+                      hackathon.position,
+                    )}`}
+                  >
+                    <Award className="w-3 h-3 inline mr-1" />
+                    {hackathon.position}
+                  </span>
+                )}
                 {hackathon.prize && (
                   <span className="text-xs font-medium text-green-600">
                     {hackathon.prize}

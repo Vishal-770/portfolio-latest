@@ -78,14 +78,29 @@ const hackathons: Hackathon[] = [
     track: "Web3",
     team: "Git Pushers",
     project: "HACKX",
-    
+    certificateLinks: [
+      "https://drive.google.com/file/d/18xgSfmJ4Q8p4oYmfrJD1FsFfkijktAAK/view?usp=drive_link",
+    ],
     place: "Top 8",
     description:
       "HACKX is a decentralized platform that automates hackathon organization: transparent judging, GitHub verification for submissions, on-chain proof of participation and achievement NFTs, and smart contracts for automated reward distribution.",
     link: "https://github.com/GIT-Pushers/Devs",
     contributors: ["Vishal Prabhu", "1", "2", "3", "4", "5"],
+  },
+  {
+    id: "Hackmoney2026-2026",
+    name: "Hackmoney 2026",
+    year: 2026,
+    track: "DeFi",
+    team: "",
+    project: "Abyss Protocol",
+    place: "",
+    description:
+      "Abyss Protocol is a comprehensive decentralized finance (DeFi) trading platform built on the Sui blockchain, featuring real-time market analytics, advanced trading tools, multi-chain intelligence, and privacy-preserving intent-based trading. The platform integrates with DeepBook V3, Mysten Seal, and NEAR Protocol to deliver a complete trading experience.",
+    link: "https://github.com/Vishal-770/sui-tma",
+    contributors: [" ", " ", " ", " "],
     certificateLinks: [
-      "https://drive.google.com/file/d/18xgSfmJ4Q8p4oYmfrJD1FsFfkijktAAK/view?usp=drive_link",
+      "https://drive.google.com/file/d/1VhAi2K7OGZvBML-SCIvMthSuHKLRdy0R/view?usp=drive_link",
     ],
   },
 ];

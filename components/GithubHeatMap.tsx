@@ -5,6 +5,7 @@ import { Github_Username } from "@/constants/user_details";
 
 import { fetchGithubHeatmap } from "@/services/FetchGithubHeatMap";
 
+
 export default function LeetCodeHeatmap({
   weeks = 53,
   days = 7,

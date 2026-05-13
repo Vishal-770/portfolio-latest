@@ -1,4 +1,4 @@
-import { ProjectCard } from "./project-card";
+import { ProjectsCard } from "./projects-card";
 import WrappedLeetCodeCard from "./Leetcode/WrappedLeetCodeCard";
 import { SkillsCard } from "./skills-card";
 import { ExperienceCard } from "./experience-card";
@@ -7,7 +7,17 @@ import { EducationCard } from "./education-card";
 import { SocialsCard } from "./socials-card";
 import GitHubCard from "./github-card";
 import { AboutCard } from "./about-card";
-import { projects } from "../constants/projects";
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 mb-3">
+      <h2 className="text-sm font-medium text-muted-foreground whitespace-nowrap">
+        {children}
+      </h2>
+      <div className="h-px bg-border/40 flex-1" />
+    </div>
+  );
+}
 
 export function ResultsContainer({
   activeTab = "all",
@@ -20,8 +30,8 @@ export function ResultsContainer({
     <div className="space-y-6">
       {/* 1️⃣ About */}
       {show("about") && (
-        <section className="space-y-3">
-          <h2 className="section-title">About</h2>
+        <section>
+          <SectionTitle>About</SectionTitle>
           <AboutCard />
         </section>
       )}
@@ -30,39 +40,26 @@ export function ResultsContainer({
       {show("skills") && <SkillsCard />}
 
       {/* 3️⃣ Projects */}
-      {show("projects") && (
-        <section className="space-y-3">
-          <h2 className="section-title">Projects</h2>
-          {projects.map((p) => (
-            <ProjectCard
-              key={p.id}
-              title={p.title}
-              url={p.url}
-              description={p.description}
-              tags={p.tags}
-            />
-          ))}
-        </section>
-      )}
+      {show("projects") && <ProjectsCard activeTab={activeTab} />}
 
       {/* 4️⃣ GitHub */}
       {show("github") && (
-        <section className="space-y-3">
-          <h2 className="section-title">GitHub</h2>
+        <section>
+          <SectionTitle>GitHub Activity</SectionTitle>
           <GitHubCard />
         </section>
       )}
 
       {/* 5️⃣ Hackathons */}
-      {show("hackathons") && <HackathonsCard />}
+      {show("hackathons") && <HackathonsCard activeTab={activeTab} />}
 
       {/* 6️⃣ Education */}
       {show("education") && <EducationCard />}
 
       {/* 7️⃣ LeetCode */}
       {show("leetcode") && (
-        <section className="space-y-3">
-          <h2 className="section-title">LeetCode</h2>
+        <section>
+          <SectionTitle>LeetCode</SectionTitle>
           <WrappedLeetCodeCard />
         </section>
       )}

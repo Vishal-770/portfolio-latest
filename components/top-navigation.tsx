@@ -11,26 +11,35 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+
+const MicrosoftLogo = () => (
+  <div className="grid grid-cols-2 gap-0.5 w-5 h-5">
+    <div className="bg-[#f25022] w-full h-full" />
+    <div className="bg-[#7fbb00] w-full h-full" />
+    <div className="bg-[#00a1f1] w-full h-full" />
+    <div className="bg-[#ffb900] w-full h-full" />
+  </div>
+);
 
 export function TopNavigation() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="sticky top-0 z-50 bg-white dark:bg-[#1b1b1b] border-b border-[#e5e5e5] dark:border-[#3b3b3b]">
+    <div className="sticky top-0 z-50 bg-white dark:bg-card border-b border-border/50 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 gap-4">
-          {/* Logo */}
-          <Avatar>
-            <AvatarImage src="/image.png" alt="@shadcn" />
-            <AvatarFallback>V</AvatarFallback>
-            Vishal
-          </Avatar>
+          {/* Logo / Brand - Microsoft Style */}
+          <Link href="/" className="flex items-center gap-3 shrink-0 group">
+            <MicrosoftLogo />
+            <span className="font-semibold text-lg tracking-tight text-foreground/90 group-hover:text-primary transition-colors">
+              Portfolio
+            </span>
+          </Link>
 
           {/* Search bar - Edge style */}
           <div className="flex-1 max-w-xl hidden md:block">
             <div className="relative group">
-              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#616161] dark:text-[#a0a0a0] group-focus-within:text-[#0078d4] transition-colors">
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors">
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -48,7 +57,7 @@ export function TopNavigation() {
               <input
                 type="text"
                 placeholder="Search portfolio..."
-                className="w-full pl-10 pr-4 py-2 bg-[#f5f5f5] dark:bg-[#2d2d2d] border border-[#e5e5e5] dark:border-[#404040] rounded-full text-sm text-[#1a1a1a] dark:text-white placeholder:text-[#767676] dark:placeholder:text-[#a0a0a0] hover:border-[#0078d4] focus:outline-none focus:border-[#0078d4] focus:ring-2 focus:ring-[#0078d4]/20 transition-all duration-200"
+                className="w-full pl-10 pr-4 py-2 bg-[#f5f5f5] dark:bg-muted/20 border border-border/60 rounded-full text-sm text-foreground placeholder:text-muted-foreground hover:border-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
               />
             </div>
           </div>
@@ -57,13 +66,13 @@ export function TopNavigation() {
           <div className="flex items-center gap-1">
             <ThemeToggle />
             <div
-              className="p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors cursor-default"
+              className="p-2 hover:bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors cursor-default"
               title="Settings"
             >
               <Settings className="w-5 h-5" strokeWidth={1.5} />
             </div>
             <div
-              className="hidden sm:flex p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors cursor-default"
+              className="hidden sm:flex p-2 hover:bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors cursor-default"
               title="Help"
             >
               <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
@@ -72,7 +81,7 @@ export function TopNavigation() {
             {/* Apps grid */}
             <div className="hidden md:block relative">
               <div
-                className="p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors cursor-default"
+                className="p-2 hover:bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors cursor-default"
                 title="Apps"
               >
                 <Grid3x3Gap className="w-5 h-5" strokeWidth={1.5} />
@@ -80,14 +89,14 @@ export function TopNavigation() {
             </div>
 
             {/* Profile */}
-            <div className="ml-1 p-1.5 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors border border-[#e5e5e5] dark:border-[#404040] hover:border-[#0078d4] cursor-default">
+            <div className="ml-1 p-1.5 hover:bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors border border-border/60 hover:border-primary cursor-default">
               <User className="w-5 h-5" strokeWidth={1.5} />
             </div>
 
             {/* Menu */}
             <button
               onClick={() => setShowMenu(!showMenu)}
-              className="p-2 hover:bg-[#f5f5f5] dark:hover:bg-[#2d2d2d] rounded-full text-[#616161] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-white transition-colors md:hidden"
+              className="p-2 hover:bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors md:hidden"
             >
               <Menu className="w-5 h-5" strokeWidth={1.5} />
             </button>

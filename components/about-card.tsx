@@ -1,22 +1,21 @@
 export function AboutCard() {
   return (
-    <article className="bg-card border border-border/50 rounded-lg p-5 hover:border-border hover:shadow-sm transition-all duration-200">
-      <div className="mb-4">
-        <h3 className="text-sm font-semibold text-primary mb-2">About</h3>
-        <div className="h-px bg-border/30"></div>
-      </div>
-
-      <p className="text-sm text-foreground/75 leading-relaxed mb-4">
-        Full-stack developer passionate about building beautiful, performant web
-        applications. Specialized in modern JavaScript frameworks, cloud
-        technologies, and blockchain development.
+    <div className="bg-card border border-border/40 rounded-xl px-5 py-4 shadow-xs">
+      <p className="text-sm text-foreground/75 leading-relaxed mb-3">
+        Full-stack developer with a strong focus on Web3, infrastructure, and
+        developer tooling. I enjoy building things from the ground up — from
+        smart contracts on EVM chains to high-performance Next.js applications.
       </p>
-
-      <p className="text-xs text-foreground/60 leading-relaxed">
-        Always learning, always building — from web2 apps to web3 integrations.
-        Open to collaborations and interesting projects in decentralized systems
-        and traditional web applications.
+      <p className="text-sm text-foreground/60 leading-relaxed mb-3">
+        When I&apos;m not writing code, I&apos;m usually deep in a terminal.
+        Daily driving <span className="text-foreground/80 font-medium">Fedora Linux</span>{" "}
+        and an unapologetic fan of the command line. Occasionally found cuddling
+        my cats between late-night debugging sessions.
       </p>
-    </article>
+      <p className="text-sm text-foreground/60 leading-relaxed">
+        Open to collaborations in decentralized systems, Web3 infra, and
+        anything that pushes the boundaries of what the web can do.
+      </p>
+    </div>
   );
 }

@@ -15,6 +15,22 @@ export interface Hackathon {
 
 const hackathons: Hackathon[] = [
   {
+    id: "open-agents-2026",
+    name: "Open Agents 2026",
+    year: 2026,
+    track: "Privacy & Identity",
+    team: "",
+    project: "Zyn Protocol",
+    place: "",
+    description:
+      "Zyn Protocol is a minimalist, high-privacy stealth payment system for ENS. It implements a 'Zero-Link' architecture where identity and financial data are completely decoupled through stateless smart contracts and client-side cryptography. Features include stateless registration, official ENS integration, CCIP-Read resolution, and EIP-5564 compliance.",
+    link: "https://github.com/Vishal-770/Zyn-Protocol",
+    contributors: ["Vishal Prabhu"],
+    certificateLinks: [
+      "https://drive.google.com/file/d/1a5OSjC2n3R0iUl0ji1IJYEYohEzT6BKS/view?usp=drive_link",
+    ],
+  },
+  {
     id: "defy26-2026",
     name: "DeFy26",
     year: 2026,

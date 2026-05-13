@@ -46,19 +46,17 @@ export function EducationCard() {
         {education.map((edu, index) => (
           <div
             key={edu.id}
-            className={`relative pl-6 ${
-              index !== education.length - 1
+            className={`relative pl-6 ${index !== education.length - 1
                 ? "pb-4 border-b border-border/30"
                 : ""
-            }`}
+              }`}
           >
             {/* Timeline dot */}
             <div
-              className={`absolute left-0 top-1 w-3 h-3 rounded-full border-2 ${
-                edu.current
+              className={`absolute left-0 top-1 w-3 h-3 rounded-full border-2 ${edu.current
                   ? "bg-primary border-primary animate-pulse"
                   : "bg-muted border-border"
-              }`}
+                }`}
             />
 
             <div className="flex flex-wrap items-start justify-between gap-2 mb-2">

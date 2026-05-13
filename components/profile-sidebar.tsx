@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { mail, socialLinks } from "@/constants/user_details";
 import Image from "next/image";
+import { Map } from "@/components/ui/map";
 
 // LeetCode Icon Component
 const LeetCodeIcon = () => (
@@ -27,6 +28,14 @@ const GFGIcon = () => (
 export function ProfileSidebar() {
   return (
     <div className="space-y-4 sm:space-y-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto scrollbar-hide lg:pb-6">
+      {/* Chennai Map Widget */}
+      <div className="rounded-xl overflow-hidden border border-border/40 shadow-xs h-36">
+        <Map
+          center={[80.2707, 13.0827]}
+          zoom={11}
+        />
+      </div>
+
       {/* Profile Card */}
       <div className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:shadow-sm transition-all">
         {/* Profile Image */}
@@ -44,15 +53,10 @@ export function ProfileSidebar() {
 
         {/* Name and Title */}
         <h2 className="text-base font-bold text-foreground text-center mb-1">
-          Vishal
+          Vishal Prabhu
         </h2>
-        <p className="text-xs font-semibold text-primary text-center mb-3 sm:mb-4 uppercase tracking-wider">
-          Developer
-        </p>
-
-        {/* Bio */}
-        <p className="text-xs text-foreground/70 text-center mb-3 sm:mb-4 leading-relaxed">
-          Crafting elegant interfaces with robust engineering
+        <p className="text-xs text-muted-foreground text-center mb-3 sm:mb-4">
+          Full-stack · Web3 · Fedora Linux 🐱
         </p>
 
         {/* Divider */}

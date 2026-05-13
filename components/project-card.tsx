@@ -11,34 +11,39 @@ export function ProjectCard({
   description,
   tags,
 }: ProjectCardProps) {
-  const [domain] = url.split("/");
-
   return (
-    <article className="bg-card border border-border/50 rounded-lg p-4 hover:border-border hover:shadow-sm transition-all duration-200 group">
-      <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1.5 truncate">
-        <span className="text-primary font-medium truncate">{domain}</span>
-        <span className="text-border/50 shrink-0">›</span>
-        <span className="truncate text-muted-foreground/70">{url}</span>
-      </div>
+    <div className="group py-4 border-b border-border/40 last:border-0 hover:bg-muted/20 -mx-2 px-2 rounded-lg transition-colors duration-150">
+      {/* URL breadcrumb */}
+      <p className="text-xs text-muted-foreground mb-1 truncate">
+        {url.replace("https://", "")}
+      </p>
 
-      <h3 className="text-base font-semibold text-primary group-hover:underline cursor-pointer mb-2 line-clamp-1 transition-colors">
+      {/* Title */}
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block text-[15px] font-normal text-primary hover:underline underline-offset-2 decoration-primary/50 mb-1.5 leading-snug"
+      >
         {title}
-      </h3>
+      </a>
 
-      <p className="text-sm text-foreground/70 leading-normal mb-3.5 line-clamp-2">
+      {/* Description */}
+      <p className="text-sm text-foreground/70 leading-relaxed line-clamp-2 mb-2.5">
         {description}
       </p>
 
-      <div className="flex flex-wrap gap-1.5 items-center">
+      {/* Tags */}
+      <div className="flex flex-wrap gap-1.5">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="inline-flex px-2 py-0.5 rounded text-xs font-medium bg-muted/40 text-foreground/70 border border-border/40 hover:bg-muted/60 hover:border-border/60 transition-colors cursor-pointer"
+            className="text-[11px] text-muted-foreground bg-muted/60 px-2 py-0.5 rounded-sm"
           >
             {tag}
           </span>
         ))}
       </div>
-    </article>
+    </div>
   );
 }

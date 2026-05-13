@@ -46,28 +46,23 @@ export function SkillsCard() {
   };
 
   return (
-    <article className="bg-card border border-border/50 rounded-lg p-4">
-      <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1.5">
-        <span className="text-primary font-medium">portfolio</span>
-        <span className="text-border/50">›</span>
-        <span>skills</span>
+    <div className="bg-card border border-border/40 rounded-xl px-5 py-4 shadow-xs">
+      <div className="flex items-center justify-between mb-1">
+        <h2 className="text-base font-semibold text-foreground">Skills</h2>
       </div>
+      <div className="h-px bg-border/40 mb-4" />
 
-      <h2 className="text-base font-semibold text-primary mb-4">
-        Technical Skills
-      </h2>
-
-      <div className="space-y-4">
+      <div className="space-y-5">
         {Object.entries(skills).map(([category, skillList]) => (
           <div key={category}>
-            <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2.5">
+            <p className="text-[11px] font-medium text-muted-foreground uppercase tracking-widest mb-2.5">
               {category}
-            </h4>
+            </p>
             <div className="flex flex-wrap gap-1.5">
               {skillList.map((skill) => (
                 <span
                   key={skill}
-                  className="inline-flex px-2 py-0.5 rounded text-xs font-medium bg-primary/8 text-primary/80 border border-primary/12 hover:bg-primary/12 hover:border-primary/20 transition-colors cursor-pointer"
+                  className="text-[12px] text-foreground/80 bg-muted/60 px-2.5 py-1 rounded-md hover:bg-muted transition-colors cursor-default"
                 >
                   {skill}
                 </span>
@@ -76,6 +71,6 @@ export function SkillsCard() {
           </div>
         ))}
       </div>
-    </article>
+    </div>
   );
 }

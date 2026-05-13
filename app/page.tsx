@@ -17,7 +17,7 @@ export default function Home() {
       <TabNavigation activeTab={activeTab} onChange={setActiveTab} />
 
       <main className="max-w-full mx-auto pt-2 sm:pt-3 pb-12">
-        <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto items-start">
           {/* Main content area */}
           <div className="flex-1 min-w-0 order-2 lg:order-1">
             <div className="mt-6 sm:mt-8">
@@ -26,7 +26,7 @@ export default function Home() {
           </div>
 
           {/* Right sidebar with profile info - Shows first on mobile, on right on desktop */}
-          <aside className="w-full lg:w-80 shrink-0 order-1 lg:order-2">
+          <aside className="w-full lg:w-80 shrink-0 order-1 lg:order-2 lg:sticky lg:top-[120px]">
             <ProfileSidebar />
           </aside>
         </div>

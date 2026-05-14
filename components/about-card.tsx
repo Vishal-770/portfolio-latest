@@ -1,6 +1,6 @@
 export function AboutCard() {
   return (
-    <div className="bg-card border border-border/40 rounded-xl px-5 py-4 shadow-xs">
+    <div className="bg-card border border-border/40 rounded-xl p-4 sm:p-5 shadow-xs">
       <p className="text-sm text-foreground/75 leading-relaxed mb-3">
         Full-stack developer with a strong focus on Web3, infrastructure, and
         developer tooling. I enjoy building things from the ground up — from

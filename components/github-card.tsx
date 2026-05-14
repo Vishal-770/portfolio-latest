@@ -14,7 +14,7 @@ export function GitHubCard() {
   });
 
   return (
-    <article className="bg-card border border-border/50 rounded-lg p-4 hover:shadow-sm transition-all">
+    <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:shadow-sm transition-all">
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-md bg-[#24292f] text-white">
           <Github className="w-6 h-6" />

@@ -23,8 +23,8 @@ const tabs = [
 export function TabNavigation({ activeTab, onChange }: TabNavigationProps) {
   return (
     <div className="sticky top-14 z-40 bg-white dark:bg-card border-b border-border/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="max-w-7xl mx-auto">
+        <nav className="flex items-center gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-4 sm:px-6 lg:px-8">
           {tabs.map((tab) => (
             <button
               key={tab.id}

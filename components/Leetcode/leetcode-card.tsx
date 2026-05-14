@@ -15,7 +15,7 @@ export function LeetCodeCard() {
   });
   if (isLoading || !stats) {
     return (
-      <article className="bg-card border border-border/50 rounded-lg p-4">
+      <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5">
         <div className="flex items-center gap-1 mb-1.5">
           <Skeleton className="h-3 w-20" />
           <Skeleton className="h-3 w-1" />
@@ -34,7 +34,7 @@ export function LeetCodeCard() {
   console.log(stats);
   return (
     <Link href="/leetcode">
-      <article className="bg-card border border-border/50 rounded-lg p-4 hover:border-border hover:shadow-md transition-all duration-300 ease-in-out cursor-pointer">
+      <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:border-border hover:shadow-md transition-all duration-300 ease-in-out cursor-pointer">
         <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1.5">
           <span className="text-primary font-medium">leetcode.com</span>
           <span className="text-border/50">›</span>

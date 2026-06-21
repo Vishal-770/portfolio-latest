@@ -192,20 +192,5 @@ export const projects = [
       "Multimodal",
     ],
   },
-  {
-    id: "file-drop",
-    title: "File Drop — Secure File Sharing",
-    url: "https://file-drop7.vercel.app",
-    description:
-      "Secure, collaborative & shareable file management built with Next.js + React. Personal storage, teams, public & password‑protected sharing, bulk actions, and modern UI.",
-    tags: [
-      "Next.js",
-      "React",
-      "Clerk",
-      "SupaBase",
-      "MongoDB",
-      "Tailwind CSS",
-      "ShadcnUI",
-    ],
-  },
+ 
 ];

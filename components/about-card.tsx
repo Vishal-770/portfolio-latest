@@ -2,15 +2,25 @@ export function AboutCard() {
   return (
     <div className="bg-card border border-border/40 rounded-xl p-4 sm:p-5 shadow-xs">
       <p className="text-sm text-foreground/75 leading-relaxed mb-3">
-        I am a software engineer focused on decentralized systems, infrastructure, and tools for developers. 
-        I work across the stack, writing smart contracts on EVM chains, designing APIs, and building clean web interfaces using Next.js.
+        I am a software engineer focused on building reliable, high-performance
+        systems across the web, desktop, and blockchain ecosystems. My work
+        spans backend architecture, distributed systems, developer tooling, and
+        modern user-facing applications.
       </p>
+
       <p className="text-sm text-foreground/60 leading-relaxed mb-3">
-        I build everything from the command line, daily driving Fedora Linux. 
-        When I am not coding, I am usually hanging out with my cats.
+        I develop scalable services, APIs, and infrastructure using modern
+        technologies, with particular interest in Rust, systems programming,
+        and performance-oriented software design. I also have experience
+        building decentralized applications, smart contracts, and protocols
+        across EVM-compatible networks and Solana.
       </p>
+
       <p className="text-sm text-foreground/60 leading-relaxed">
-        Always interested in collaborating on Web3 core infrastructure, developer experience improvements, or new decentralized platforms.
+        Driven by a strong engineering mindset, I enjoy solving complex
+        technical problems, designing maintainable systems, and shipping
+        products that balance scalability, reliability, and exceptional user
+        experience.
       </p>
     </div>
   );

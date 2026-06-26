@@ -9,7 +9,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Microsoft Edge ",
+  title: "Vishal Prabhu",
   description:
     "Vishal — Developer focused on polished web experiences: Next.js, TypeScript, and real projects.",
 };

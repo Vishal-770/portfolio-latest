@@ -14,7 +14,7 @@ export function ProjectsCard({ activeTab }: { activeTab?: string }) {
   const hasMore = projects.length > 5 && activeTab === "all";
 
   return (
-    <div className="bg-card border border-border/40 rounded-xl p-4 sm:p-5 shadow-xs">
+    <div className="py-2">
       {/* Section header */}
       <div className="flex items-center justify-between mb-1">
         <h2 className="text-base font-semibold text-foreground">Projects</h2>

@@ -122,7 +122,7 @@ export function SocialsCard() {
   ];
 
   return (
-    <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:border-border hover:shadow-sm transition-all duration-200">
+    <article className="py-2">
       <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1.5">
         <span className="text-primary font-medium">portfolio</span>
         <span className="text-border/50">›</span>
@@ -143,7 +143,7 @@ export function SocialsCard() {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg border border-border/40 transition-all duration-200 group ${social.bgColor}`}
+            className={`flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg transition-all duration-200 group ${social.bgColor}`}
           >
             <div
               className={`${social.color} transition-transform group-hover:scale-110 shrink-0`}

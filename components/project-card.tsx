@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+
 interface ProjectCardProps {
   title: string;
   url: string;
@@ -11,8 +15,29 @@ export function ProjectCard({
   description,
   tags,
 }: ProjectCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [canExpand, setCanExpand] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current && !isExpanded) {
+        setCanExpand(textRef.current.scrollHeight > textRef.current.clientHeight);
+      }
+    };
+
+    // Measure after paint
+    const timer = setTimeout(checkOverflow, 50);
+
+    window.addEventListener("resize", checkOverflow);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", checkOverflow);
+    };
+  }, [description, isExpanded]);
+
   return (
-    <div className="group py-4 border-b border-border/40 last:border-0 hover:bg-muted/20 -mx-2 px-2 rounded-lg transition-colors duration-150">
+    <div className="group py-4 border-b border-border/40 last:border-0 transition-colors duration-150">
       {/* URL breadcrumb */}
       <p className="text-xs text-muted-foreground mb-1 truncate">
         {url.replace("https://", "")}
@@ -29,9 +54,21 @@ export function ProjectCard({
       </a>
 
       {/* Description */}
-      <p className="text-sm text-foreground/70 leading-relaxed line-clamp-2 mb-2.5">
+      <p 
+        ref={textRef}
+        className={`text-sm text-foreground/70 leading-relaxed mb-2 ${isExpanded ? "" : "line-clamp-2"}`}
+      >
         {description}
       </p>
+      
+      {canExpand && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-xs text-primary hover:underline mb-2 block focus:outline-none"
+        >
+          {isExpanded ? "Read less" : "Read more"}
+        </button>
+      )}
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5">

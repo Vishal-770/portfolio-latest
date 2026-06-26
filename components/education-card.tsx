@@ -30,7 +30,7 @@ export function EducationCard() {
   ];
 
   return (
-    <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:border-border hover:shadow-sm transition-all duration-200">
+    <article className="py-2">
       <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1.5">
         <span className="text-primary font-medium">portfolio</span>
         <span className="text-border/50">›</span>

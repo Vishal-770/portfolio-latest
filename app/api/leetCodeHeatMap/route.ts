@@ -41,7 +41,7 @@ export async function GET(req: Request) {
       `,
       variables: { username },
     }),
-    cache: "no-store",
+    next: { revalidate: 21600 },
   });
 
   const json = await res.json();
@@ -61,9 +61,7 @@ export async function GET(req: Request) {
     },
     {
       headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
+        "Cache-Control": "public, max-age=21600, s-maxage=21600, stale-while-revalidate=60",
       },
     }
   );

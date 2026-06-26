@@ -12,10 +12,11 @@ export function LeetCodeCard() {
   const { data: stats, isLoading } = useQuery({
     queryFn: () => fetchLeetCodeStats(Leetcode_Username),
     queryKey: ["leetcode-stats"],
+    staleTime: 1000 * 60 * 60 * 6,
   });
   if (isLoading || !stats) {
     return (
-      <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5">
+      <article className="py-2">
         <div className="flex items-center gap-1 mb-1.5">
           <Skeleton className="h-3 w-20" />
           <Skeleton className="h-3 w-1" />
@@ -34,7 +35,7 @@ export function LeetCodeCard() {
   console.log(stats);
   return (
     <Link href="/leetcode">
-      <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:border-border hover:shadow-md transition-all duration-300 ease-in-out cursor-pointer">
+      <article className="py-2 hover:opacity-90 transition-all duration-300 ease-in-out cursor-pointer">
         <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1.5">
           <span className="text-primary font-medium">leetcode.com</span>
           <span className="text-border/50">›</span>
@@ -52,7 +53,7 @@ export function LeetCodeCard() {
         </p>
 
         <div className="grid grid-cols-3 gap-2 sm:gap-3">
-          <div className="bg-muted/20 rounded p-2 sm:p-3 text-center border border-border/30 hover:bg-muted/10 hover:border-border/40 hover:shadow-sm transition-all duration-200 ease-in-out cursor-pointer group">
+          <div className="bg-muted/20 rounded p-2 sm:p-3 text-center hover:bg-muted/10 hover:shadow-sm transition-all duration-200 ease-in-out cursor-pointer group">
             <div className="flex justify-center mb-1 sm:mb-2">
               <Target className="w-4 h-4 sm:w-5 sm:h-5 text-primary group-hover:scale-105 transition-transform duration-200 ease-in-out" />
             </div>
@@ -64,7 +65,7 @@ export function LeetCodeCard() {
             </div>
           </div>
 
-          <div className="bg-muted/20 rounded p-2 sm:p-3 text-center border border-border/30 hover:bg-muted/10 hover:border-border/40 hover:shadow-sm transition-all duration-200 ease-in-out cursor-pointer group">
+          <div className="bg-muted/20 rounded p-2 sm:p-3 text-center hover:bg-muted/10 hover:shadow-sm transition-all duration-200 ease-in-out cursor-pointer group">
             <div className="flex justify-center mb-1 sm:mb-2">
               <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-accent group-hover:scale-105 transition-transform duration-200 ease-in-out" />
             </div>
@@ -76,7 +77,7 @@ export function LeetCodeCard() {
             </div>
           </div>
 
-          <div className="bg-muted/20 rounded p-2 sm:p-3 text-center border border-border/30 hover:bg-muted/10 hover:border-border/40 hover:shadow-sm transition-all duration-200 ease-in-out cursor-pointer group">
+          <div className="bg-muted/20 rounded p-2 sm:p-3 text-center hover:bg-muted/10 hover:shadow-sm transition-all duration-200 ease-in-out cursor-pointer group">
             <div className="flex justify-center mb-1 sm:mb-2">
               <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-primary group-hover:scale-105 transition-transform duration-200 ease-in-out" />
             </div>

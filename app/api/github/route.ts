@@ -31,8 +31,8 @@ export async function GET(req: Request) {
     const reposUrl = `https://api.github.com/users/${username}/repos?per_page=6&sort=updated`;
 
     const [profileRes, reposRes] = await Promise.all([
-      fetch(profileUrl, { headers, cache: "no-store" }),
-      fetch(reposUrl, { headers, cache: "no-store" }),
+      fetch(profileUrl, { headers, next: { revalidate: 21600 } }),
+      fetch(reposUrl, { headers, next: { revalidate: 21600 } }),
     ]);
 
     if (!profileRes.ok) {
@@ -80,7 +80,7 @@ export async function GET(req: Request) {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          cache: "no-store",
+          next: { revalidate: 21600 },
           body: JSON.stringify({
             query: `query($login: String!) { user(login: $login) { contributionsCollection { contributionCalendar { totalContributions } } } }`,
             variables: { login: username },
@@ -102,9 +102,7 @@ export async function GET(req: Request) {
       { profile, repos, contributionsTotal },
       {
         headers: {
-          "Cache-Control": "no-cache, no-store, must-revalidate",
-          Pragma: "no-cache",
-          Expires: "0",
+          "Cache-Control": "public, max-age=21600, s-maxage=21600, stale-while-revalidate=60",
         },
       }
     );

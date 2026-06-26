@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Calendar,
   Users,
@@ -9,6 +9,7 @@ import {
   FileText,
   ChevronDown,
   ChevronUp,
+  Package,
 } from "lucide-react";
 import hackathonsData, {
   Hackathon as HackathonConst,
@@ -29,6 +30,152 @@ interface HackathonView {
   showcase?: string;
   tags: string[];
   certificateLinks?: string[];
+  npm?: string;
+}
+
+function HackathonItem({
+  hackathon,
+  getPositionColor,
+}: {
+  hackathon: HackathonView;
+  getPositionColor: (position: string) => string;
+}) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [canExpand, setCanExpand] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current && !isExpanded) {
+        setCanExpand(textRef.current.scrollHeight > textRef.current.clientHeight);
+      }
+    };
+
+    // Measure after paint
+    const timer = setTimeout(checkOverflow, 50);
+
+    window.addEventListener("resize", checkOverflow);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", checkOverflow);
+    };
+  }, [hackathon.description, isExpanded]);
+
+  return (
+    <div className="group py-4 border-b border-border/40 last:border-0 transition-colors duration-150">
+      {/* Top row: name + links + position badge */}
+      <div className="flex items-start justify-between gap-3 mb-0.5">
+        <div className="flex items-center gap-2 flex-wrap min-w-0">
+          <span className="text-[15px] font-normal text-foreground leading-snug">
+            {hackathon.name}
+          </span>
+          {hackathon.link && (
+            <a
+              href={hackathon.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors shrink-0"
+              aria-label="Project Link"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
+          {hackathon.npm && (
+            <a
+              href={hackathon.npm}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors shrink-0"
+              aria-label="NPM Package"
+              title="NPM Package"
+            >
+              <Package className="w-3.5 h-3.5" />
+            </a>
+          )}
+          {hackathon.certificateLinks &&
+            hackathon.certificateLinks.filter((l) => l && l.trim()).length > 0 &&
+            hackathon.certificateLinks
+              .filter((l) => l && l.trim())
+              .map((certLink, idx) => (
+                <a
+                  key={idx}
+                  href={certLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors shrink-0"
+                  aria-label={`Certificate ${idx + 1}`}
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                </a>
+              ))}
+        </div>
+
+        {/* Position + Prize */}
+        <div className="flex flex-col items-end gap-1 shrink-0">
+          {hackathon.position && hackathon.position.trim() && (
+            <span className={`text-xs font-medium flex items-center gap-1 ${getPositionColor(hackathon.position)}`}>
+              <Award className="w-3 h-3" />
+              {hackathon.position}
+            </span>
+          )}
+          {hackathon.prize && (
+            <span className="text-[11px] font-medium text-green-600 dark:text-green-400">
+              {hackathon.prize}
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Organizer + meta */}
+      <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
+        {hackathon.organizer && (
+          <span>{hackathon.organizer}</span>
+        )}
+        <span className="flex items-center gap-1">
+          <Calendar className="w-3 h-3" />
+          {hackathon.date}
+        </span>
+        <span className="flex items-center gap-1">
+          <Users className="w-3 h-3" />
+          Team of {hackathon.teamSize}
+        </span>
+      </div>
+
+      {/* Project name + description */}
+      <p className="text-sm font-medium text-foreground/80 mb-1">
+        {hackathon.project}
+      </p>
+      <p 
+        ref={textRef}
+        className={`text-sm text-foreground/60 leading-relaxed mb-2 ${isExpanded ? "" : "line-clamp-2"}`}
+      >
+        {hackathon.description}
+      </p>
+
+      {canExpand && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-xs text-primary hover:underline mb-2 block focus:outline-none"
+        >
+          {isExpanded ? "Read less" : "Read more"}
+        </button>
+      )}
+
+      {/* Tags */}
+      {hackathon.tags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {hackathon.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[11px] text-muted-foreground bg-muted/60 px-2 py-0.5 rounded-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export function HackathonsCard({ activeTab }: { activeTab?: string }) {
@@ -46,6 +193,7 @@ export function HackathonsCard({ activeTab }: { activeTab?: string }) {
       teamSize: (h.contributors || []).filter(Boolean).length || 1,
       prize: h.prize,
       link: h.link,
+      npm: h.npm,
       certificateLinks: h.certificateLinks,
       tags: (h.track || "")
         .split(",")
@@ -69,7 +217,7 @@ export function HackathonsCard({ activeTab }: { activeTab?: string }) {
   const hasMore = hackathons.length > 5 && activeTab === "all";
 
   return (
-    <div className="bg-card border border-border/40 rounded-xl p-4 sm:p-5 shadow-xs">
+    <div className="py-2">
       {/* Header */}
       <div className="flex items-center justify-between mb-1">
         <h2 className="text-base font-semibold text-foreground">Hackathons</h2>
@@ -79,99 +227,12 @@ export function HackathonsCard({ activeTab }: { activeTab?: string }) {
 
       {/* List */}
       <div>
-        {displayedHackathons.map((hackathon, index) => (
-          <div
+        {displayedHackathons.map((hackathon) => (
+          <HackathonItem
             key={hackathon.id}
-            className="group py-4 border-b border-border/40 last:border-0 hover:bg-muted/20 -mx-2 px-2 rounded-lg transition-colors duration-150"
-          >
-            {/* Top row: name + links + position badge */}
-            <div className="flex items-start justify-between gap-3 mb-0.5">
-              <div className="flex items-center gap-2 flex-wrap min-w-0">
-                <span className="text-[15px] font-normal text-foreground leading-snug">
-                  {hackathon.name}
-                </span>
-                {hackathon.link && (
-                  <a
-                    href={hackathon.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors shrink-0"
-                    aria-label="Project Link"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                )}
-                {hackathon.certificateLinks &&
-                  hackathon.certificateLinks.filter((l) => l && l.trim()).length > 0 &&
-                  hackathon.certificateLinks
-                    .filter((l) => l && l.trim())
-                    .map((certLink, idx) => (
-                      <a
-                        key={idx}
-                        href={certLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors shrink-0"
-                        aria-label={`Certificate ${idx + 1}`}
-                      >
-                        <FileText className="w-3.5 h-3.5" />
-                      </a>
-                    ))}
-              </div>
-
-              {/* Position + Prize */}
-              <div className="flex flex-col items-end gap-1 shrink-0">
-                {hackathon.position && hackathon.position.trim() && (
-                  <span className={`text-xs font-medium flex items-center gap-1 ${getPositionColor(hackathon.position)}`}>
-                    <Award className="w-3 h-3" />
-                    {hackathon.position}
-                  </span>
-                )}
-                {hackathon.prize && (
-                  <span className="text-[11px] font-medium text-green-600 dark:text-green-400">
-                    {hackathon.prize}
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Organizer + meta */}
-            <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
-              {hackathon.organizer && (
-                <span>{hackathon.organizer}</span>
-              )}
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3 h-3" />
-                {hackathon.date}
-              </span>
-              <span className="flex items-center gap-1">
-                <Users className="w-3 h-3" />
-                Team of {hackathon.teamSize}
-              </span>
-            </div>
-
-            {/* Project name + description */}
-            <p className="text-sm font-medium text-foreground/80 mb-1">
-              {hackathon.project}
-            </p>
-            <p className="text-sm text-foreground/60 leading-relaxed line-clamp-2 mb-2.5">
-              {hackathon.description}
-            </p>
-
-            {/* Tags */}
-            {hackathon.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5">
-                {hackathon.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[11px] text-muted-foreground bg-muted/60 px-2 py-0.5 rounded-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+            hackathon={hackathon}
+            getPositionColor={getPositionColor}
+          />
         ))}
       </div>
 

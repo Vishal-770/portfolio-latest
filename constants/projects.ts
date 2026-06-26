@@ -1,5 +1,35 @@
 export const projects = [
   {
+    id: "deskly",
+    title: "Deskly — Desktop Companion (Electron to Rust/Tauri Rewrite)",
+    url: "https://github.com/Vishal-770/deskly-tauri",
+    description:
+      "A cross-platform desktop application for VIT student management, rewritten from Electron (Next.js/TypeScript) to Rust and Tauri. This rewrite reduced the application bundle size from 160MB to a mere 4MB, significantly optimizing startup time, CPU usage, and memory footprints.",
+    tags: [
+      "Rust",
+      "Tauri",
+      "Electron",
+      "Next.js",
+      "TypeScript",
+      "Performance",
+    ],
+  },
+  {
+    id: "envtrap",
+    title: "envtrap — Runtime Environment Secret Protection CLI & NPM Package",
+    url: "https://github.com/Vishal-770/envtrap",
+    description:
+      "A runtime environment secret protection tool and CLI for Node.js. It monitors how environment secrets are accessed and used while the application is running, actively blocking exfiltration attempts through outbound HTTPS traffic, DNS queries, subprocesses, and log streams. Available on npm as 'envtrap'.",
+    tags: [
+      "Node.js",
+      "NPM Package",
+      "CLI Tool",
+      "Security",
+      "Developer Tooling",
+      "Cybersecurity",
+    ],
+  },
+  {
     id: "mecha-pay",
     title: "Mecha Pay Protocol — USDC-native Membership Infrastructure",
     url: "https://github.com/Vishal-770/mecha-pay",
@@ -110,20 +140,6 @@ export const projects = [
     ],
   },
   {
-    id: "deskly",
-    title: "Deskly — Your Desktop Companion (VIT Student Management)",
-    url: "https://github.com/Vishal-770/Deskly",
-    description:
-      "A desktop application built with Electron and Next.js for VIT student management. An independent project created by students for students, featuring production builds for Windows, macOS, and Linux.",
-    tags: [
-      "Electron",
-      "Next.js",
-      "TypeScript",
-      "Desktop App",
-      "Student Management",
-    ],
-  },
-  {
     id: "twoline",
     title: "TwoLine — AI Medical Partner (Frontend Design)",
     url: "https://github.com/Vishal-770/TwoLine",
@@ -192,5 +208,4 @@ export const projects = [
       "Multimodal",
     ],
   },
- 
 ];

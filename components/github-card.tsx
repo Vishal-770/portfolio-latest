@@ -10,11 +10,11 @@ export function GitHubCard() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["github-profile", socialLinks.github],
     queryFn: () => fetchGitHubProfileByUrl(socialLinks.github),
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 60 * 6,
   });
 
   return (
-    <article className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:shadow-sm transition-all">
+    <article className="py-2">
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-md bg-[#24292f] text-white">
           <Github className="w-6 h-6" />
@@ -106,7 +106,7 @@ export function GitHubCard() {
                     href={r.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between px-3 py-2 rounded-md bg-muted/20 hover:bg-muted/40 border border-border/20"
+                    className="flex items-center justify-between px-3 py-2 rounded-md bg-muted/20 hover:bg-muted/40"
                   >
                     <div>
                       <div className="text-sm font-medium">{r.name}</div>

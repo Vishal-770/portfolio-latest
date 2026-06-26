@@ -11,9 +11,25 @@ export interface Hackathon {
   link?: string;
   certificateLinks?: string[];
   prize?: string;
+  npm?: string;
 }
 
 const hackathons: Hackathon[] = [
+  {
+    id: "arc-night-2026",
+    name: "Arc Night",
+    year: 2026,
+    track: "Security, Developer Tooling",
+    team: "Microsoft Innovations Club VITC",
+    project: "envtrap",
+    place: "3rd Place",
+    prize: "Third Prize",
+    description:
+      "An npm package and CLI tool for Node.js applications that tracks environment secrets at runtime and prevents them from being leaked through logs, network requests, DNS queries, or subprocesses. It monitors how secrets move through a running process and blocks exfiltration dynamically.",
+    link: "https://github.com/Vishal-770/envtrap",
+    npm: "https://www.npmjs.com/package/envtrap",
+    contributors: ["Vishal Prabhu", "Kopathy K", "SHAILESH K S"],
+  },
   {
     id: "open-agents-2026",
     name: "Open Agents 2026",

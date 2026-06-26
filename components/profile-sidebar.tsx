@@ -29,7 +29,7 @@ export function ProfileSidebar() {
   return (
     <div className="space-y-4 sm:space-y-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto scrollbar-hide lg:pb-6">
       {/* Chennai Map Widget */}
-      <div className="rounded-xl overflow-hidden border border-border/40 shadow-xs h-36">
+      <div className="rounded-xl overflow-hidden shadow-xs h-36">
         <Map
           center={[80.2707, 13.0827]}
           zoom={11}
@@ -37,10 +37,10 @@ export function ProfileSidebar() {
       </div>
 
       {/* Profile Card */}
-      <div className="bg-card border border-border/50 rounded-lg p-4 sm:p-5 hover:shadow-sm transition-all">
+      <div className="py-2">
         {/* Profile Image */}
         <div className="mb-4 sm:mb-5 flex justify-center">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-linear-to-br from-primary/70 to-accent/50 rounded-full flex items-center justify-center shadow-md border-2 border-border/30">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-linear-to-br from-primary/70 to-accent/50 rounded-full flex items-center justify-center shadow-md">
             <Image
               src="/image.png"
               alt="Profile Image"
@@ -97,7 +97,7 @@ export function ProfileSidebar() {
             href={socialLinks.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-foreground hover:bg-[#333]/20 dark:hover:bg-[#f0f6fc]/10 hover:border-border/80 transition-all duration-200"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 text-foreground hover:text-foreground hover:bg-[#333]/20 dark:hover:bg-[#f0f6fc]/10 transition-all duration-200"
             aria-label="GitHub"
             title="GitHub"
           >
@@ -107,7 +107,7 @@ export function ProfileSidebar() {
             href={socialLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 hover:border-border/80 transition-all duration-200"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 text-foreground hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-200"
             aria-label="LinkedIn"
             title="LinkedIn"
           >
@@ -117,7 +117,7 @@ export function ProfileSidebar() {
             href={socialLinks.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-foreground hover:bg-foreground/10 hover:border-border/80 transition-all duration-200"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 text-foreground hover:text-foreground hover:bg-foreground/10 transition-all duration-200"
             aria-label="Twitter"
             title="Twitter / X"
           >
@@ -127,7 +127,7 @@ export function ProfileSidebar() {
             href={socialLinks.leetcode}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-[#FFA116] hover:bg-[#FFA116]/10 hover:border-border/80 transition-all duration-200"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 text-foreground hover:text-[#FFA116] hover:bg-[#FFA116]/10 transition-all duration-200"
             aria-label="LeetCode"
             title="LeetCode"
           >
@@ -137,7 +137,7 @@ export function ProfileSidebar() {
             href={socialLinks.geeks_forgeeks}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-[#2F8D46] hover:bg-[#2F8D46]/10 hover:border-border/80 transition-all duration-200"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 text-foreground hover:text-[#2F8D46] hover:bg-[#2F8D46]/10 transition-all duration-200"
             aria-label="GeeksForGeeks"
             title="GeeksForGeeks"
           >
@@ -145,7 +145,7 @@ export function ProfileSidebar() {
           </a>
           <a
             href={socialLinks.mail}
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 border border-border/60 text-foreground hover:text-red-500 hover:bg-red-500/10 hover:border-border/80 transition-all duration-200"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-muted/50 text-foreground hover:text-red-500 hover:bg-red-500/10 transition-all duration-200"
             aria-label="Email"
             title="Email"
           >
@@ -175,16 +175,16 @@ export function ProfileSidebar() {
       </div>
 
       {/* Stats Card */}
-      <div className="bg-muted/30 border border-border/50 rounded-lg p-3 sm:p-4 hover:bg-muted/50 hover:border-border/70 transition-all">
+      <div className="py-2">
         <p className="text-xs font-semibold text-foreground/70 mb-3 sm:mb-4 uppercase tracking-widest">
           Portfolio Overview
         </p>
         <div className="space-y-2 sm:space-y-2.5 text-xs">
-          <div className="flex justify-between items-center pb-2 border-b border-border/30">
+          <div className="flex justify-between items-center pb-2">
             <span className="text-foreground/60">Total Projects</span>
             <span className="font-bold text-foreground">10+</span>
           </div>
-          <div className="flex justify-between items-center pb-2 border-b border-border/30">
+          <div className="flex justify-between items-center pb-2">
             <span className="text-foreground/60">Technologies</span>
             <span className="font-bold text-foreground">20+</span>
           </div>

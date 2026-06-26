@@ -1,52 +1,46 @@
 export function SkillsCard() {
   const skills = {
-    Frontend: [
-      "React",
-      "Next.js",
-      "Shadcn UI",
-      "Tailwind CSS",
-      "GSAP",
-      "framer-motion",
-      "Bootstrap",
-      "Vanilla JavaScript",
-    ],
-    Backend: [
-      "Node.js",
-      "Express.js",
-      "NestJS",
-      "Supabase",
-      "Firebase",
-      "PostgreSQL",
-      "MongoDB",
-      "drizzle-orm",
-    ],
-    "Platforms & Tools": [
-      "Git",
-      "Docker",
-      "Vercel",
-      "AWS",
-      "Axios",
-      "React Router",
-      "TanStack Query",
-      "React Hook Form",
-      "Zustand",
-      "Redux",
-    ],
     Languages: [
       "TypeScript",
       "JavaScript",
-      "Python",
-      "C++",
-      "C",
       "Java",
+      "C",
+      "C++",
+      "Python",
+      "Rust",
       "Solidity",
     ],
-    Blockchain: ["Foundry", "thirdweb"],
-    Other: ["SEO", "REST APIs", "GraphQL", "WebSockets", "CI/CD"],
+    Frameworks: [
+      "React.js",
+      "Next.js",
+      "Nest.js",
+      "Node.js",
+      "Express.js",
+      "Tauri",
+      "Electron.js",
+      "Foundry",
+    ],
+    "Databases & DB Tools": [
+      "PostgreSQL (SQL)",
+      "MongoDB (NoSQL)",
+      "Mongoose",
+      "Drizzle ORM",
+    ],
+    "Tools, Platforms & Other": [
+      "Git",
+      "Docker",
+      "AWS",
+      "Vercel",
+      "REST APIs",
+      "GraphQL",
+      "WebSockets",
+      "CI/CD",
+      "SEO",
+    ],
   };
 
   return (
-    <div className="bg-card border border-border/40 rounded-xl p-4 sm:p-5 shadow-xs">
+    <div className="py-2">
       <div className="flex items-center justify-between mb-1">
         <h2 className="text-base font-semibold text-foreground">Skills</h2>
       </div>

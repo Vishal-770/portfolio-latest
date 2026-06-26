@@ -1,6 +1,6 @@
 export function AboutCard() {
   return (
-    <div className="bg-card border border-border/40 rounded-xl p-4 sm:p-5 shadow-xs">
+    <div>
       <p className="text-sm text-foreground/75 leading-relaxed mb-3">
         I am a software engineer focused on building reliable, high-performance
         systems across the web, desktop, and blockchain ecosystems. My work

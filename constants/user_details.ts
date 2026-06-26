@@ -5,7 +5,7 @@ export const Github_Username = "vishal-770";
 export const socialLinks = {
   github: "https://github.com/Vishal-770",
   linkedin: "https://www.linkedin.com/in/vishalprabhu07/",
-  twitter: "https://x.com/VishalPrabhu07",
+  twitter: "https://x.com/vishalp_exe",
   leetcode: "https://leetcode.com/amQBEsUk1H/",
   mail: "mailto:vishalwebdev07@gmail.com",
   geeks_forgeeks: "https://www.geeksforgeeks.org/profile/vishalwelx18",

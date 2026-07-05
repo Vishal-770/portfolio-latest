@@ -1,12 +1,12 @@
 import { link } from "fs";
 
-export const Leetcode_Username = "amQBEsUk1H";
+export const Leetcode_Username = "vishal_7707";
 export const Github_Username = "vishal-770";
 export const socialLinks = {
   github: "https://github.com/Vishal-770",
   linkedin: "https://www.linkedin.com/in/vishalprabhu07/",
   twitter: "https://x.com/vishalp_exe",
-  leetcode: "https://leetcode.com/amQBEsUk1H/",
+  leetcode: "https://leetcode.com/u/vishal_7707/",
   mail: "mailto:vishalwebdev07@gmail.com",
   geeks_forgeeks: "https://www.geeksforgeeks.org/profile/vishalwelx18",
   devfolio: "https://devfolio.co/@vishal_7707",

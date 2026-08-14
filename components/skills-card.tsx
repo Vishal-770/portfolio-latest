@@ -13,6 +13,7 @@ export function SkillsCard() {
     Frameworks: [
       "React.js",
       "Next.js",
+      "Axum",
       "Nest.js",
       "Node.js",
       "Express.js",
@@ -20,13 +21,14 @@ export function SkillsCard() {
       "Electron.js",
       "Foundry",
     ],
-    "Databases & DB Tools": [
-      "PostgreSQL (SQL)",
-      "MongoDB (NoSQL)",
+    Databases: [
+      "PostgreSQL",
+      "SQLx",
+      "MongoDB",
       "Mongoose",
       "Drizzle ORM",
     ],
-    "Tools, Platforms & Other": [
+    Tools: [
       "Git",
       "Docker",
       "AWS",
@@ -35,7 +37,6 @@ export function SkillsCard() {
       "GraphQL",
       "WebSockets",
       "CI/CD",
-      "SEO",
     ],
   };
 

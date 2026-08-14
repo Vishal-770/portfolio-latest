@@ -29,6 +29,9 @@ const hackathons: Hackathon[] = [
     link: "https://github.com/Vishal-770/envtrap",
     npm: "https://www.npmjs.com/package/envtrap",
     contributors: ["Vishal Prabhu", "Kopathy K", "SHAILESH K S"],
+    certificateLinks: [
+      "https://drive.google.com/file/d/1J8OrsSOIAuxw-p4j4x0BcoD6GWY_hfD8/view?usp=sharing",
+    ],
   },
   {
     id: "open-agents-2026",

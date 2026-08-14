@@ -30,9 +30,9 @@ export const projects = [
     ],
   },
   {
-    id: "mecha-pay",
-    title: "Mecha Pay Protocol — USDC-native Membership Infrastructure",
-    url: "https://github.com/Vishal-770/mecha-pay",
+    id: "arc",
+    title: "Arc Protocol — USDC-native Membership Infrastructure",
+    url: "https://github.com/Vishal-770/arca",
     description:
       "Production-grade, USDC-native membership infrastructure for Web3. Features USDC-as-gas on Arc blockchain, native Circle CCTP bridging, and programmable wallets for automated subscriptions. Built with Next.js 15, Circle SDK, and Privy.",
     tags: [

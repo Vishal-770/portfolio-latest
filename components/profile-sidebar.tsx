@@ -56,7 +56,7 @@ export function ProfileSidebar() {
           Vishal Prabhu
         </h2>
         <p className="text-xs text-muted-foreground text-center mb-3 sm:mb-4">
-          Full-stack · Web3 · Fedora Linux 🐱
+          Full-stack · Web3 · Linux
         </p>
 
         {/* Divider */}

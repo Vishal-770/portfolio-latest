@@ -91,7 +91,9 @@ export async function GET(req: Request) {
     },
     {
       headers: {
-        "Cache-Control": "public, max-age=21600, s-maxage=21600, stale-while-revalidate=60",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
       },
     }
   );

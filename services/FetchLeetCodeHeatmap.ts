@@ -10,7 +10,7 @@ export async function fetchLeetCodeHeatmap(username: string) {
   if (!username) throw new Error("Username is required");
 
   const res = await api.get<LeetCodeHeatmapResponse>("/api/leetCodeHeatMap", {
-    params: { username },
+    params: { username, _t: Date.now() },
   });
 
   return res.data;

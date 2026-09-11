@@ -1,5 +1,7 @@
 import { ProjectsCard } from "./projects-card";
+import { OpenSourceCard } from "./opensource-card";
 import WrappedLeetCodeCard from "./Leetcode/WrappedLeetCodeCard";
+import WrappedGFGCard from "./GFG/WrappedGFGCard";
 import { SkillsCard } from "./skills-card";
 import { ExperienceCard } from "./experience-card";
 import { HackathonsCard } from "./hackathons-card";
@@ -39,10 +41,16 @@ export function ResultsContainer({
       {/* 2️⃣ Skills */}
       {show("skills") && <SkillsCard />}
 
-      {/* 3️⃣ Projects */}
+      {/* 3️⃣ Work Experience */}
+      {show("experience") && <ExperienceCard />}
+
+      {/* 4️⃣ Open Source */}
+      {show("opensource") && <OpenSourceCard activeTab={activeTab} />}
+
+      {/* 5️⃣ Projects */}
       {show("projects") && <ProjectsCard activeTab={activeTab} />}
 
-      {/* 4️⃣ GitHub */}
+      {/* 6️⃣ GitHub */}
       {show("github") && (
         <section>
           <SectionTitle>GitHub Activity</SectionTitle>
@@ -50,7 +58,7 @@ export function ResultsContainer({
         </section>
       )}
 
-      {/* 5️⃣ Hackathons */}
+      {/* 7️⃣ Hackathons */}
       {show("hackathons") && <HackathonsCard activeTab={activeTab} />}
 
       {/* 6️⃣ Education */}
@@ -64,8 +72,13 @@ export function ResultsContainer({
         </section>
       )}
 
-      {/* 8️⃣ Experience */}
-      {show("experience") && <ExperienceCard />}
+      {/* 8️⃣ GeeksforGeeks */}
+      {show("gfg") && (
+        <section>
+          <SectionTitle>GeeksforGeeks</SectionTitle>
+          <WrappedGFGCard />
+        </section>
+      )}
 
       {/* 9️⃣ Socials */}
       {show("socials") && <SocialsCard />}

@@ -10,6 +10,7 @@ import {
   ChevronDown,
   ChevronUp,
   Package,
+  Globe,
 } from "lucide-react";
 import hackathonsData, {
   Hackathon as HackathonConst,
@@ -76,8 +77,21 @@ function HackathonItem({
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors shrink-0"
               aria-label="Project Link"
+              title="Project Link"
             >
               <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
+          {hackathon.showcase && (
+            <a
+              href={hackathon.showcase}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors shrink-0"
+              aria-label="ETHGlobal Showcase"
+              title="ETHGlobal Showcase"
+            >
+              <Globe className="w-3.5 h-3.5" />
             </a>
           )}
           {hackathon.npm && (
@@ -193,6 +207,7 @@ export function HackathonsCard({ activeTab }: { activeTab?: string }) {
       teamSize: (h.contributors || []).filter(Boolean).length || 1,
       prize: h.prize,
       link: h.link,
+      showcase: h.showcase,
       npm: h.npm,
       certificateLinks: h.certificateLinks,
       tags: (h.track || "")

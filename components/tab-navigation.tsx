@@ -9,11 +9,13 @@ interface TabNavigationProps {
 
 const tabs = [
   { id: "all", label: "All" },
-  { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
-  { id: "leetcode", label: "LeetCode" },
+  { id: "opensource", label: "Open Source" },
+  { id: "projects", label: "Projects" },
   { id: "github", label: "GitHub" },
+  { id: "leetcode", label: "LeetCode" },
+  { id: "gfg", label: "GFG" },
   { id: "hackathons", label: "Hackathons" },
   { id: "education", label: "Education" },
   { id: "socials", label: "Socials" },

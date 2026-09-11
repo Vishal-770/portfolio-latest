@@ -11,8 +11,8 @@ import LeetCodeHeatmap from "./LeetCodeHeatmap";
 export function LeetCodeCard() {
   const { data: stats, isLoading } = useQuery({
     queryFn: () => fetchLeetCodeStats(Leetcode_Username),
-    queryKey: ["leetcode-stats"],
-    staleTime: 1000 * 60 * 60 * 6,
+    queryKey: ["leetcode-stats", Leetcode_Username],
+    staleTime: 1000 * 60,
   });
   if (isLoading || !stats) {
     return (

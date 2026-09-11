@@ -2,7 +2,7 @@ export const projects = [
   {
     id: "deskly",
     title: "Deskly — Desktop Companion (Electron to Rust/Tauri Rewrite)",
-    url: "https://github.com/Vishal-770/deskly-tauri",
+    url: "https://github.com/deskly-app/deskly",
     description:
       "A cross-platform desktop application for VIT student management, rewritten from Electron (Next.js/TypeScript) to Rust and Tauri. This rewrite reduced the application bundle size from 160MB to a mere 4MB, significantly optimizing startup time, CPU usage, and memory footprints.",
     tags: [
@@ -17,7 +17,7 @@ export const projects = [
   {
     id: "envtrap",
     title: "envtrap — Runtime Environment Secret Protection CLI & NPM Package",
-    url: "https://github.com/Vishal-770/envtrap",
+    url: "https://github.com/envtrap/envtrap-package",
     description:
       "A runtime environment secret protection tool and CLI for Node.js. It monitors how environment secrets are accessed and used while the application is running, actively blocking exfiltration attempts through outbound HTTPS traffic, DNS queries, subprocesses, and log streams. Available on npm as 'envtrap'.",
     tags: [

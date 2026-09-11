@@ -53,7 +53,7 @@ export const LeetCodeWidget: React.FC = () => {
 
   const { data, isLoading } = useQuery({
     queryFn: () => fetchLeetCodeSolved(Leetcode_Username),
-    queryKey: ["leetcode-solved"],
+    queryKey: ["leetcode-solved", Leetcode_Username],
   });
 
   if (isLoading) {

@@ -12,7 +12,7 @@ export async function fetchLeetCodeStats(
   }
 
   const res = await api.get<LeetCodeMinimalStats>("/api/leetcode", {
-    params: { username },
+    params: { username, _t: Date.now() },
   });
 
   return res.data;

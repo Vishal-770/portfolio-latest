@@ -19,7 +19,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export function ProfileSidebar() {
   const { data, isLoading } = useQuery({
     queryFn: () => fetchLeetCodeProfile(Leetcode_Username),
-    queryKey: ["leetcode-profile"],
+    queryKey: ["leetcode-profile", Leetcode_Username],
   });
 
   if (isLoading) {

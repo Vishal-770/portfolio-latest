@@ -22,7 +22,7 @@ export async function fetchLeetCodeSolved(
   if (!username) throw new Error("Username is required");
 
   const res = await api.get<LeetCodeSolvedResponse>("/api/leetcodeSolved", {
-    params: { username },
+    params: { username, _t: Date.now() },
   });
 
   return res.data;

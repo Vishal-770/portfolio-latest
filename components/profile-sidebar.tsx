@@ -52,12 +52,9 @@ export function ProfileSidebar() {
         </div>
 
         {/* Name and Title */}
-        <h2 className="text-base font-bold text-foreground text-center mb-1">
+        <h2 className="text-base font-bold text-foreground text-center mb-3 sm:mb-4">
           Vishal Prabhu
         </h2>
-        <p className="text-xs text-muted-foreground text-center mb-3 sm:mb-4">
-          Full-stack · Web3 · Linux
-        </p>
 
         {/* Divider */}
         <div className="h-px bg-border/30 mb-3 sm:mb-4"></div>
@@ -163,12 +160,18 @@ export function ProfileSidebar() {
         <div className="space-y-2 sm:space-y-3 text-xs">
           <div className="flex justify-between items-start gap-2">
             <span className="text-foreground/60">Currently Learning</span>
-            <span className="font-medium text-foreground text-right">Web3</span>
+            <span className="font-medium text-foreground text-right">
+              Rust & System Design
+            </span>
+          </div>
+          <div className="flex justify-between items-start gap-2">
+            <span className="text-foreground/60">Favorite Language</span>
+            <span className="font-medium text-foreground text-right">Rust</span>
           </div>
           <div className="flex justify-between items-start gap-2">
             <span className="text-foreground/60">Favorite Stack</span>
             <span className="font-medium text-foreground text-right">
-              Next.js + TS
+              Rust + Next.js
             </span>
           </div>
         </div>
@@ -182,11 +185,11 @@ export function ProfileSidebar() {
         <div className="space-y-2 sm:space-y-2.5 text-xs">
           <div className="flex justify-between items-center pb-2">
             <span className="text-foreground/60">Total Projects</span>
-            <span className="font-bold text-foreground">10+</span>
+            <span className="font-bold text-foreground">14+</span>
           </div>
           <div className="flex justify-between items-center pb-2">
             <span className="text-foreground/60">Technologies</span>
-            <span className="font-bold text-foreground">20+</span>
+            <span className="font-bold text-foreground">25+</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-foreground/60">Experience</span>

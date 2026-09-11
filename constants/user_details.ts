@@ -1,7 +1,6 @@
-import { link } from "fs";
-
 export const Leetcode_Username = "vishal_7707";
 export const Github_Username = "vishal-770";
+export const GFG_Username = "vishalwelx18";
 export const socialLinks = {
   github: "https://github.com/Vishal-770",
   linkedin: "https://www.linkedin.com/in/vishalprabhu07/",

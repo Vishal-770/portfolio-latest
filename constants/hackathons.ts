@@ -9,6 +9,7 @@ export interface Hackathon {
   description: string;
   contributors: string[];
   link?: string;
+  showcase?: string;
   certificateLinks?: string[];
   prize?: string;
   npm?: string;
@@ -26,7 +27,7 @@ const hackathons: Hackathon[] = [
     prize: "Third Prize",
     description:
       "An npm package and CLI tool for Node.js applications that tracks environment secrets at runtime and prevents them from being leaked through logs, network requests, DNS queries, or subprocesses. It monitors how secrets move through a running process and blocks exfiltration dynamically.",
-    link: "https://github.com/Vishal-770/envtrap",
+    link: "https://github.com/envtrap/envtrap-package",
     npm: "https://www.npmjs.com/package/envtrap",
     contributors: ["Vishal Prabhu", "Kopathy K", "SHAILESH K S"],
     certificateLinks: [
@@ -44,6 +45,7 @@ const hackathons: Hackathon[] = [
     description:
       "Zyn Protocol is a minimalist, high-privacy stealth payment system for ENS. It implements a 'Zero-Link' architecture where identity and financial data are completely decoupled through stateless smart contracts and client-side cryptography. Features include stateless registration, official ENS integration, CCIP-Read resolution, and EIP-5564 compliance.",
     link: "https://github.com/Vishal-770/Zyn-Protocol",
+    showcase: "https://ethglobal.com/showcase/zyn-qqj0p",
     contributors: ["Vishal Prabhu"],
     certificateLinks: [
       "https://drive.google.com/file/d/1a5OSjC2n3R0iUl0ji1IJYEYohEzT6BKS/view?usp=drive_link",
@@ -100,7 +102,8 @@ const hackathons: Hackathon[] = [
     description:
       "Multi-agent DeFi platform with fast Envio indexing, memecoin trading using Hedera Agentkit and A2A.",
 
-    link: "https://ethglobal.com/showcase/meme-sentinel-0icnu",
+    link: "https://github.com/Vishal-770/EthOnline",
+    showcase: "https://ethglobal.com/showcase/meme-sentinel-0icnu",
     contributors: ["Vishal Prabhu", "1", "2"],
     certificateLinks: [
       "https://drive.google.com/file/d/1ekwpiaCccbVtVYEByOd8Zapfus76_y_7/view?usp=drive_link",
@@ -133,6 +136,7 @@ const hackathons: Hackathon[] = [
     description:
       "Abyss Protocol is a comprehensive decentralized finance (DeFi) trading platform built on the Sui blockchain, featuring real-time market analytics, advanced trading tools, multi-chain intelligence, and privacy-preserving intent-based trading. The platform integrates with DeepBook V3, Mysten Seal, and NEAR Protocol to deliver a complete trading experience.",
     link: "https://github.com/Vishal-770/sui-tma",
+    showcase: "https://ethglobal.com/showcase/abyss-protocol-rz97h",
     contributors: [" ", " ", " ", " "],
     certificateLinks: [
       "https://drive.google.com/file/d/1VhAi2K7OGZvBML-SCIvMthSuHKLRdy0R/view?usp=drive_link",

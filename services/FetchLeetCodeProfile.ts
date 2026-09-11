@@ -44,7 +44,7 @@ export async function fetchLeetCodeProfile(
   const res = await axios.get<{ data: { matchedUser: LeetCodeProfileData } }>(
     "/api/leetcode/profile",
     {
-      params: { username },
+      params: { username, _t: Date.now() },
     }
   );
 

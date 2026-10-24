@@ -31,6 +31,8 @@ export function TabNavigation({ activeTab, onChange }: TabNavigationProps) {
             <button
               key={tab.id}
               onClick={() => onChange(tab.id)}
+              type="button"
+              aria-pressed={activeTab === tab.id}
               className={`relative px-4 py-3 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                 activeTab === tab.id
                   ? "text-[#0078d4] dark:text-[#4fc3f7]"

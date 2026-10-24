@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  color-scheme: light;
   /* Neutral Light Theme (Zero Chroma) */
   --background: oklch(0.99 0 0);
   --foreground: oklch(0.2 0 0);
@@ -36,6 +37,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   /* Microsoft Edge Dark Theme — Cohesive tones */
   --background: oklch(0.14 0.005 240);  /* Slightly warm dark slate */
   --foreground: oklch(0.93 0 0);
@@ -123,6 +125,17 @@
   }
   .maplibregl-popup-tip {
     @apply hidden!;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

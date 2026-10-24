@@ -16,7 +16,15 @@ export default function Home() {
 
       <TabNavigation activeTab={activeTab} onChange={setActiveTab} />
 
-      <main className="max-w-full mx-auto pt-2 sm:pt-3 pb-12">
+      <a
+        href="#portfolio-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+      >
+        Skip to portfolio content
+      </a>
+
+      <main id="portfolio-content" className="max-w-full mx-auto pt-2 sm:pt-3 pb-12">
+        <h1 className="sr-only">Vishal Prabhu portfolio</h1>
         <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto items-start">
           {/* Main content area */}
           <div className="flex-1 w-full min-w-0 order-2 lg:order-1">

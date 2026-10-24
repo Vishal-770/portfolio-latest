@@ -12,15 +12,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 
-const MicrosoftLogo = () => (
-  <div className="grid grid-cols-2 gap-0.5 w-5 h-5">
-    <div className="bg-[#f25022] w-full h-full" />
-    <div className="bg-[#7fbb00] w-full h-full" />
-    <div className="bg-[#00a1f1] w-full h-full" />
-    <div className="bg-[#ffb900] w-full h-full" />
-  </div>
-);
-
 export function TopNavigation() {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -28,9 +19,8 @@ export function TopNavigation() {
     <div className="sticky top-0 z-50 bg-white dark:bg-card border-b border-border/50 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 gap-4">
-          {/* Logo / Brand - Microsoft Style */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <MicrosoftLogo />
+          {/* Logo / Brand */}
+          <Link href="/" className="flex items-center gap-2 shrink-0 group">
             <span className="font-semibold text-lg tracking-tight text-foreground/90 group-hover:text-primary transition-colors">
               Portfolio
             </span>

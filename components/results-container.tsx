@@ -31,12 +31,7 @@ export function ResultsContainer({
   return (
     <div className="space-y-6">
       {/* 1️⃣ About */}
-      {show("about") && (
-        <section>
-          <SectionTitle>About</SectionTitle>
-          <AboutCard />
-        </section>
-      )}
+      {show("about") && <AboutCard />}
 
       {/* 2️⃣ Skills */}
       {show("skills") && <SkillsCard />}

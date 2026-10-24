@@ -15,6 +15,22 @@ export const projects = [
     ],
   },
   {
+    id: "logrix",
+    title: "Logrix — Ultra-Fast, Kubernetes-Native EVM Indexer in Rust",
+    url: "https://github.com/Vishal-770/Logrix",
+    description:
+      "An ultra-fast, Kubernetes-native EVM blockchain event indexer built in Rust. Features vectorized PostgreSQL ingestion (>20,000 events/sec), reorg-safe atomic rollbacks, dual hot/cold tiering with zstd S3 archival, and TypeScript SDK handler authoring via sandboxed WebAssembly.",
+    tags: [
+      "Rust",
+      "EVM",
+      "Blockchain Indexer",
+      "Kubernetes",
+      "PostgreSQL",
+      "WebAssembly",
+      "TypeScript SDK",
+    ],
+  },
+  {
     id: "envtrap",
     title: "envtrap — Runtime Environment Secret Protection CLI & NPM Package",
     url: "https://github.com/envtrap/envtrap-package",

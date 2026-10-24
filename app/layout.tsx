@@ -32,7 +32,6 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
